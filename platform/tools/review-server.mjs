@@ -32,7 +32,7 @@ export async function reviewServer({ port = 0 } = {}) {
   return { origin: `http://127.0.0.1:${server.address().port}`, close: () => new Promise(resolve => server.close(resolve)) };
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const preview = await reviewServer({ port: 4190 });
+  const preview = await reviewServer({ port: 4191 });
   console.log(`Local editorial review only: ${preview.origin}/?lang=ar`);
   process.on('SIGINT', async () => { await preview.close(); process.exit(); });
 }

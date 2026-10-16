@@ -55,11 +55,16 @@ try {
         fonts: [...document.fonts].map(f => ({ family: f.family, status: f.status })),
         boxes: Object.fromEntries(selectors.map(selector => { const e = document.querySelector(selector), r = e.getBoundingClientRect(), c = getComputedStyle(e); return [selector, { x: r.x, y: r.y, width: r.width, height: r.height, font: c.fontFamily, fontSize: c.fontSize, fontWeight: c.fontWeight, lineHeight: c.lineHeight }]; }))
       }), selectors));
+      // Warm the full-page raster before measuring: large PNGs can first use a
+      // temporary low-quality resample even after decode() has resolved.
+      await page.screenshot({ fullPage: true, animations: 'disabled' });
+      await page.waitForTimeout(700);
       let previous, stable;
       for (let attempt = 0; attempt < 8; attempt++) {
         const current = await page.screenshot({ fullPage: true, animations: 'disabled' });
         if (previous?.equals(current)) { stable = current; break; }
         previous = current;
+        await page.waitForTimeout(150);
       }
       if (!stable) throw new Error(`Unstable rendering: ${name}-${version}`);
       await writeFile(new URL(`${name}-${version}.png`, out), stable);
