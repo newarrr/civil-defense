@@ -14,10 +14,21 @@ backend:
 site_url: https://newarrr.github.io/civil-defense/
 display_url: https://newarrr.github.io/civil-defense/
 logo_url: ../assets/civil-defense-logo.png
-locale: ar
 
 media_folder: assets/uploads
 public_folder: assets/uploads
+
+# الصور تُحوَّل تلقائيًا إلى WebP بعرض أقصى 1600 بكسل قبل الرفع، والحد الأقصى للملف 10 ميغابايت.
+media_libraries:
+  default:
+    config:
+      max_file_size: 10000000
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 1600
+          height: 1600
 
 collections:
   # ---------------------------------------------------------------- الأخبار
@@ -34,12 +45,30 @@ collections:
             label: الأخبار (الأحدث أولًا)
             label_singular: خبر
             widget: list
-            summary: "{{fields.date}} — {{fields.ar.title}}"
+            summary: "{{fields.date}} — {{fields.ar.title}} {{fields.published | ternary('', '· مسودة')}}"
             add_to_top: true
             fields:
+              - { name: published, label: "منشور (ألغِ التفعيل لحفظه كمسودة غير ظاهرة)", widget: boolean, default: true }
+              - name: category
+                label: التصنيف
+                widget: select
+                default: news
+                options:
+                  - { label: خبر, value: news }
+                  - { label: فعالية / نشاط, value: event }
+                  - { label: عملية ميدانية, value: operation }
+                  - { label: تدريب وتوعية, value: training }
+                  - { label: إعلان, value: announcement }
               - { name: slug, label: "معرّف الرابط (حروف إنجليزية وشرطات، مثل: training-day-2026)", widget: string, pattern: ["^[a-z0-9-]+$", "حروف إنجليزية صغيرة وأرقام وشرطات فقط"] }
               - { name: date, label: التاريخ, widget: datetime, time_format: false, format: YYYY-MM-DD, date_format: YYYY-MM-DD }
               - { name: image, label: صورة الغلاف, widget: image, required: false }
+              - { name: image_alt, label: "وصف الصورة (للمكفوفين ومحركات البحث)", widget: string, required: false }
+              - name: gallery
+                label: معرض الصور (اختياري)
+                label_singular: صورة
+                widget: list
+                required: false
+                field: { name: image, label: صورة, widget: image }
               - { name: video, label: "رابط فيديو YouTube أو Vimeo (اختياري)", widget: string, required: false }
               - name: ar
                 label: العربية
@@ -173,3 +202,105 @@ collections:
               - { name: badini, label: ناڤ ب بادینی, widget: string, required: false }
               - { name: sorani, label: ناونیشان بە سۆرانی, widget: string, required: false }
               - { name: en, label: Title in English, widget: string, required: false }
+
+  # ------------------------------------------------------------- الإحصائيات
+  - name: stats
+    label: الإحصائيات
+    description: الأرقام في أسفل الصفحة الرئيسية. لا يظهر الرقم إلا بعد تفعيل «معتمد»، وإلا تبقى العبارة «بانتظار البيانات».
+    files:
+      - name: stats
+        label: أرقام الصفحة الرئيسية
+        file: content/stats.json
+        format: json
+        fields:
+          - name: responseRate
+            label: "نسبة الاستجابة للطوارئ (مثل 98%)"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: value, label: الرقم, widget: string, required: false }
+              - { name: period, label: "الفترة (مثل 2025)", widget: string, required: false }
+              - { name: approved, label: معتمد من المديرية, widget: boolean, default: false }
+          - name: beneficiaries
+            label: "المستفيدون من التوعية"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: value, label: الرقم, widget: string, required: false }
+              - { name: period, label: "الفترة (مثل 2025)", widget: string, required: false }
+              - { name: approved, label: معتمد من المديرية, widget: boolean, default: false }
+          - name: centerCount
+            label: "عدد مراكز الدفاع المدني"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: value, label: الرقم, widget: string, required: false }
+              - { name: period, label: "الفترة (مثل 2025)", widget: string, required: false }
+              - { name: approved, label: معتمد من المديرية, widget: boolean, default: false }
+          - name: staff
+            label: "عدد المنتسبين"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: value, label: الرقم, widget: string, required: false }
+              - { name: period, label: "الفترة (مثل 2025)", widget: string, required: false }
+              - { name: approved, label: معتمد من المديرية, widget: boolean, default: false }
+          - name: rescueCount
+            label: "عمليات الإنقاذ والإطفاء"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: value, label: الرقم, widget: string, required: false }
+              - { name: period, label: "الفترة (مثل 2025)", widget: string, required: false }
+              - { name: approved, label: معتمد من المديرية, widget: boolean, default: false }
+
+  # ---------------------------------------------------------------- المراكز
+  - name: centers
+    label: مراكز الدفاع المدني
+    description: تظهر في صفحة «حالة الخدمات» قسم المراكز. لا يظهر المركز إلا بعد تفعيل «تم التحقق».
+    files:
+      - name: centers
+        label: المراكز
+        file: content/centers.json
+        format: json
+        fields:
+          - name: items
+            label: المراكز
+            label_singular: مركز
+            widget: list
+            summary: "{{fields.ar.name}} — {{fields.ar.district}} {{fields.verified | ternary('✓', '· غير مؤكد')}}"
+            fields:
+              - { name: verified, label: تم التحقق من البيانات, widget: boolean, default: false }
+              - { name: phone, label: الهاتف, widget: string, required: false, pattern: ["^[+0-9 ]{3,20}$", "أرقام فقط"] }
+              - { name: map, label: "رابط الخريطة (Google Maps أو OpenStreetMap)", widget: string, required: false, pattern: ['^https://\S+$', "رابط يبدأ بـ https://"] }
+              - name: ar
+                label: العربية
+                widget: object
+                fields:
+                  - { name: name, label: اسم المركز, widget: string }
+                  - { name: district, label: القضاء / الناحية, widget: string }
+                  - { name: hours, label: أوقات العمل, widget: string, required: false }
+              - name: badini
+                label: بادینی
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: name, label: ناڤێ ناڤەندێ, widget: string, required: false }
+                  - { name: district, label: قەزا, widget: string, required: false }
+                  - { name: hours, label: دەمێن کاری, widget: string, required: false }
+              - name: sorani
+                label: سۆرانی
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: name, label: ناوی ناوەند, widget: string, required: false }
+                  - { name: district, label: قەزا, widget: string, required: false }
+                  - { name: hours, label: کاتی کار, widget: string, required: false }
+              - name: en
+                label: English
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: name, label: Center name, widget: string, required: false }
+                  - { name: district, label: District, widget: string, required: false }
+                  - { name: hours, label: Hours, widget: string, required: false }

@@ -56,10 +56,10 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', r); else r();
   });
 
-  Promise.all([load('news.json'), load('alerts.json'), load('menu.json'), ready]).then(function (res) {
+  Promise.all([load('news.json'), load('alerts.json'), load('menu.json'), load('stats.json'), load('centers.json'), ready]).then(function (res) {
     var now = Date.now();
     var news = ((res[0] && res[0].items) || [])
-      .filter(function (n) { return n && /^[a-z0-9-]+$/.test(n.slug || '') && n.ar && n.ar.title; })
+      .filter(function (n) { return n && n.published !== false && /^[a-z0-9-]+$/.test(n.slug || '') && n.ar && n.ar.title; })
       .sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); })
       .map(function (n) {
         var bodies = four(n, 'body');
@@ -70,6 +70,8 @@
           body: bodies.map(textToHtml),
           publishedAt: String(n.date || '').slice(0, 10),
           image: safeImage(n.image),
+          alt: n.image_alt || '',
+          gallery: (n.gallery || []).map(safeImage).filter(Boolean),
           video: n.video ? embed(n.video) : ''
         };
       });
@@ -84,7 +86,11 @@
         return { group: l.group, url: l.url, position: l.position || 'end', label: fourFlat(l) };
       })
     };
-    window.CD_CMS = { news: news, alerts: alerts, menu: menu };
+    var stats = res[3] || {};
+    var centers = ((res[4] && res[4].items) || []).filter(function (c) { return c && c.verified && c.ar && c.ar.name; }).map(function (c) {
+      return { name: four(c, 'name'), district: four(c, 'district'), hours: four(c, 'hours'), phone: String(c.phone || '').replace(/[^+0-9]/g, ''), map: /^https:\/\//.test(c.map || '') ? c.map : '' };
+    });
+    window.CD_CMS = { news: news, alerts: alerts, menu: menu, stats: stats, centers: centers };
     apply();
   });
 
@@ -125,10 +131,13 @@
       var n = bySlug[slug], dialog = document.querySelector('#home-dialog'), box = document.querySelector('#dialog-content');
       if (!n || !dialog || !box) return;
       var media = '';
-      if (n.image) media += '<img src="' + esc(n.image) + '" alt="" style="width:100%;border-radius:6px;margin:12px 0">';
+      if (n.image) media += '<img src="' + esc(n.image) + '" alt="' + esc(n.alt) + '" style="width:100%;border-radius:6px;margin:12px 0">';
       if (n.video) media += '<div style="position:relative;aspect-ratio:16/9;margin:12px 0"><iframe src="' + esc(n.video) + '" title="' + esc(pick(n.title)) + '" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe></div>';
       // body is built only from escaped text by textToHtml().
-      box.innerHTML = '<h2 id="home-dialog-title">' + esc(pick(n.title)) + '</h2><time dir="ltr">' + esc(n.publishedAt) + '</time>' + media + '<div style="line-height:1.9">' + pick(n.body) + '</div>';
+      box.innerHTML = '<h2 id="home-dialog-title">' + esc(pick(n.title)) + '</h2><time dir="ltr">' + esc(n.publishedAt) + '</time>' + media + '<div style="line-height:1.9">' + pick(n.body) + '</div>' +
+        (n.gallery.length ? '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:12px">' + n.gallery.map(function (g) {
+          return '<a href="' + esc(g) + '" target="_blank" rel="noopener"><img src="' + esc(g) + '" alt="" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px"></a>';
+        }).join('') + '</div>' : '');
       if (!dialog.open) dialog.showModal();
     }
     document.addEventListener('click', function (e) {
@@ -153,12 +162,45 @@
       document.body.prepend(bar);
     }
 
+    // Statistics: only approved numbers replace the original "—" / "pending".
+    function applyStats() {
+      document.querySelectorAll('.bottom-stats .stat').forEach(function (el) {
+        var key = el.querySelector('span[data-text]') && el.querySelector('span[data-text]').dataset.text;
+        var st = key && cms.stats[key];
+        if (!st || !st.approved || !st.value) return;
+        el.querySelector('b').textContent = st.value;
+        var small = el.querySelector('small');
+        if (small) { small.removeAttribute('data-text'); small.textContent = st.period || ''; }
+      });
+    }
+    applyStats();
+
+    // Centers: verified centers replace the "pending" text in the centers section (service status page).
+    var CL = { name: ['المركز', 'ناڤەند', 'ناوەند', 'Center'], district: ['القضاء', 'قەزا', 'قەزا', 'District'], phone: ['الهاتف', 'تەلەفۆن', 'تەلەفۆن', 'Phone'], hours: ['أوقات العمل', 'دەمێن کاری', 'کاتی کار', 'Hours'], map: ['الخريطة', 'نەخشە', 'نەخشە', 'Map'] };
+    function applyCenters() {
+      var sec = document.querySelector('section#centers');
+      if (!sec || !cms.centers.length || sec.dataset.cms === lang()) return;
+      sec.dataset.cms = lang();
+      var h2 = sec.querySelector('h2');
+      var rows = cms.centers.map(function (c) {
+        return '<tr><td>' + esc(pick(c.name)) + '</td><td>' + esc(pick(c.district)) + '</td><td>' + (c.phone ? '<a href="tel:' + esc(c.phone) + '" dir="ltr">' + esc(c.phone) + '</a>' : '') + '</td><td>' + esc(pick(c.hours)) + '</td><td>' + (c.map ? '<a href="' + esc(c.map) + '" target="_blank" rel="noopener noreferrer">↗</a>' : '') + '</td></tr>';
+      }).join('');
+      var head = ['name', 'district', 'phone', 'hours', 'map'].map(function (k) { return '<th>' + esc(pick(CL[k])) + '</th>'; }).join('');
+      sec.innerHTML = '';
+      if (h2) sec.appendChild(h2);
+      sec.insertAdjacentHTML('beforeend', '<div class="responsive-table"><table><thead><tr>' + head + '</tr></thead><tbody>' + rows + '</tbody></table></div>');
+    }
+    applyCenters();
+    var app = document.querySelector('#app');
+    if (app) new MutationObserver(applyCenters).observe(app, { childList: true, subtree: true });
+
     // Re-render the original page with the new data: re-select the current language
     // (home.js re-renders cards; sections-nav.js re-renders the menu on data-locale change).
     var current = document.querySelector('[data-lang][aria-pressed="true"]');
     if (current) current.click();
     else if (document.documentElement.dataset.locale) document.documentElement.setAttribute('data-locale', document.documentElement.dataset.locale);
     decorate();
+    applyStats();
     if (location.hash.indexOf('#news-') === 0) open(location.hash.slice(6));
   }
 })();
