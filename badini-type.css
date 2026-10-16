@@ -1,0 +1,27 @@
+@font-face{font-family:'Duhok Noto Kufi';src:url('typography/NotoKufiArabic.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:'Duhok Noto Sans';src:url('typography/NotoSansArabic.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+html[data-locale=badini] body{font-family:'Duhok Noto Sans','Noto Sans Arabic',system-ui,sans-serif;font-synthesis:none;letter-spacing:normal}
+html[data-locale=badini] button,html[data-locale=badini] input,html[data-locale=badini] select,html[data-locale=badini] textarea{font-family:inherit}
+html[data-locale=badini] h1,html[data-locale=badini] h2,html[data-locale=badini] h3,html[data-locale=badini] .brand strong,html[data-locale=badini] .hero-copy .kicker{font-family:'Duhok Noto Kufi','Duhok Noto Sans',sans-serif;letter-spacing:normal;font-synthesis:none}
+html[data-locale=badini] .hero-copy h1{font-size:clamp(28px,3.4cqw,70px);line-height:1.6;font-weight:800;white-space:nowrap}
+html[data-locale=badini] .hero-copy .kicker{font-size:clamp(19px,1.7cqw,34px);line-height:1.8;font-weight:700}
+html[data-locale=badini] .hero-copy .kicker>span:first-child{font-size:1.4em;line-height:1}
+html[data-locale=badini] .hero-copy h2{font-family:'Duhok Noto Sans',sans-serif;font-size:clamp(17px,1.65cqw,32px);line-height:1.9;white-space:normal;font-weight:750}
+html[data-locale=badini] .hero-copy .kurdish-line{font-size:clamp(16px,1.2cqw,23px);line-height:1.95;white-space:normal;margin:8px 0 18px}
+html[data-locale=badini] .hero-actions a{font-size:clamp(14px,1.05cqw,21px);min-height:48px;line-height:1.8;white-space:normal}
+html[data-locale=badini] .hero-stats .stat span{font-size:clamp(12px,.85cqw,17px);line-height:1.8;overflow-wrap:anywhere}
+html[data-locale=badini] .hero-stats .stat small{font-size:clamp(9px,.62cqw,12px)}
+html[data-locale=badini] .brand strong{line-height:1.8}
+html[data-locale=badini] .interior-banner h1{line-height:1.6}
+html[data-locale=badini] .about-copy h2{line-height:1.65}
+html[data-locale=badini] .section h2,html[data-locale=badini] .intro h1{line-height:1.8}
+.badini-motto{font-family:'Duhok Noto Kufi','Duhok Noto Sans',sans-serif;font-size:16px;line-height:2;text-align:center;margin:0 0 14px;width:100%;color:inherit}
+html:not([data-locale=badini]) .badini-motto{display:none}
+html[data-locale=badini] body>.page>footer{flex-wrap:wrap}
+html[data-locale=badini] body>.page>footer .badini-motto{flex-basis:100%;margin-bottom:3px}
+@media(min-width:801px){html[data-locale=badini] .hero{min-height:calc(9.65cqw + 400px)}html[data-locale=badini] .hero-stats .stat{min-height:9cqw;height:auto}html[data-locale=badini] .hero-stats{align-items:stretch}}
+@media(max-width:800px){html[data-locale=badini] .hero-copy h1{font-size:clamp(28px,6.7vw,43px);line-height:1.8;white-space:normal}html[data-locale=badini] .hero-copy .kicker{font-size:20px}html[data-locale=badini] .hero-copy h2{font-size:18px}html[data-locale=badini] .hero-copy .kurdish-line{font-size:17px}html[data-locale=badini] .hero-actions a{font-size:14px;min-height:54px;height:auto;padding:8px 6px}html[data-locale=badini] .hero-stats .stat{height:auto;min-height:110px}html[data-locale=badini] .hero-stats .stat span{font-size:13px}html[data-locale=badini] .brand strong{font-size:14px}html[data-locale=badini] .badini-motto{font-size:15px;line-height:2.1;padding-inline:8px}}
+@media(max-width:414px){html[data-locale=badini] .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}html[data-locale=badini] .hero-actions{flex-wrap:wrap}html[data-locale=badini] .hero-actions a{flex-basis:100%}html[data-locale=badini] .hero-stats .stat{min-height:105px}}
+@media print{.badini-motto{font-size:11pt;color:#000}}
+
+html[data-locale=badini] .footer-main{flex-wrap:wrap}html[data-locale=badini] .footer-main .badini-motto{flex-basis:100%}

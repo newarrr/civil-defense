@@ -1,0 +1,154 @@
+/* Locale reading flow and user-confirmed layout: RTL copy/brand right, photo left.
+   Photos/logos are positioned and cropped in their natural orientation. */
+html[dir=rtl]{--text-direction:rtl}
+html[dir=ltr]{--text-direction:ltr}
+html[dir] :is(.hero-copy h1,.hero-copy h2,.hero-copy p,.brand strong,.field-quote strong,.field-quote small,.service-strip strong,.service-strip small,.news-card h3,.notice span,.center-card h2,.center-card p,.stat span,.stat small,.account-card h2,.account-subtitle,.account-notice,.account-help,.account-privacy){direction:var(--text-direction);unicode-bidi:isolate}
+html[dir] :is(input:not([type=email]):not([type=url]):not([type=tel]),textarea,select){direction:var(--text-direction)}
+html[dir] :is(input[type=email],input[type=url],input[type=tel],.source-url,.phone-number){direction:ltr;unicode-bidi:isolate}
+html[dir] :is(time,[dir=ltr],bdi){unicode-bidi:isolate}
+
+html[dir] :is(.page>header,.brand,.brand div,.brand span,.nav-shell,.nav-shell .tools,.nav-shell .sections-primary,.hero-copy,.hero-actions,.hero-actions>a,.hero-stats,.stat,.service-strip,.service-strip>a,.service-strip span,.information,.news-cards,.news-card,.notice,.center-card,.center-card a,.bottom-stats,.field-quote,.header-inner,.header nav,.account-header,.account-languages,.account-emergency){direction:var(--text-direction)}
+html[dir] :is(.hero-copy,.brand div,.brand span,.service-strip span,.news-card,.news-card h3,.center-card,.field-quote,.account-emergency>span:last-child){text-align:start}
+html[dir] .page>header .brand div{min-width:0;flex:1;white-space:normal;overflow-wrap:anywhere}
+html[dir] .kicker{direction:var(--text-direction);flex-direction:row}
+html[dir] .stat span,html[dir] .stat small{unicode-bidi:isolate}
+html[dir] .field-quote i{margin-inline-start:auto;margin-inline-end:0}
+html[dir] .news-card h3{padding-left:0;padding-inline-end:1.4cqw}
+html[dir] .card-arrow{right:auto;inset-inline-end:.7cqw}
+html[dir] .bottom-stats .stat{padding-left:0;padding-inline-start:4.8cqw;text-align:start;border-right:0;border-inline-end:1px solid #ffffff55}
+html[dir] .bottom-stats .stat:last-child{border-inline-end:0}
+html[dir] .bottom-stats .icon{left:auto;inset-inline-start:.7cqw}
+html[dir] :is(.hero-image,.account-background){transform:none}
+html[dir] .account-emergency>span:last-child{direction:var(--text-direction);border-left:0;border-inline-start:1px solid #ff899080;padding-left:0;padding-inline-start:24px}
+html[dir] .account-input input{padding-inline-start:13px!important;padding-inline-end:44px!important}
+html[dir=rtl] .account-input :is(input[type=email],input[type=tel],input[type=url]){padding-inline-start:44px!important;padding-inline-end:13px!important}
+html[dir=ltr] svg.icon:has(use[href="#i-arrow"]){rotate:180deg}
+html[dir=rtl] :is(.service-strip i,.card-arrow,.center-card a>span:first-child){rotate:180deg}
+html[dir=ltr] :is(.section-top a>span:first-child,.account-submit>span:last-child){rotate:180deg}
+html[dir=ltr] .section-top{direction:rtl}
+html[dir=ltr] .section-top>*{direction:ltr}
+html[dir=rtl] .reference-about .about-grid{direction:ltr}
+html[dir=ltr] .reference-about .about-grid{direction:rtl}
+html[dir] .reference-about .about-grid>*{direction:var(--text-direction)}
+html[dir=ltr] .reference-about .interior-banner:before{inset:0 0 0 auto;clip-path:polygon(0 0,100% 0,100% 100%,24% 100%)}
+@media(min-width:801px){
+ html[dir=rtl] .page .hero-copy{left:auto;right:4.1%}
+ html[dir=rtl] .page .white-panel{left:auto;right:0;clip-path:polygon(100% 0,35% 0,12.3% 25.5%,0 100%,100% 100%)}
+ html[dir=rtl] .page .hero:before{left:auto;right:33.6%;clip-path:polygon(100% 0,22% 0,0 100%,84% 54%)}
+ html[dir=rtl] .page .nav-shell{padding-inline:1.25cqw 2.1cqw;border-radius:0 0 15px 5px}
+ html[dir=rtl] .page .nav-shell:before{left:auto;right:-12px;transform:skewX(-14deg);border-radius:0 0 9px 0}
+ html[dir=rtl] .page .language-menu{right:auto;left:5.5cqw}
+ html[dir=rtl] .page .information{padding-inline:.6cqw 2.6cqw}
+ html[dir=rtl] .page .news-block{padding-right:0;padding-inline-end:1cqw;border-right:0;border-inline-end:1px solid #dfe1e4}
+ html[dir=rtl] .page .center-card{border-radius:0 7px 7px 0;margin-left:0;margin-inline-start:.1cqw}
+ html[dir=rtl] .page .center-card>.icon{left:auto;right:1.5cqw}
+ html[dir=rtl] .page .center-card h2{padding-inline-start:3cqw}
+ html[dir=rtl] .page .center-card a{margin-right:0;margin-inline-start:auto}
+ html[dir=rtl] .nav-shell #search-open{margin-right:0;border-right:1px solid #ffffff60;border-inline-end:0;border-radius:0 6px 6px 0}
+ html[dir=rtl] .nav-shell #language-open{border-radius:6px 0 0 6px}
+}
+
+html[dir=rtl] .interior-page .header{background:linear-gradient(255deg,#fff 0 32%,#18090c 32%,#0d151b 65%)}
+@media(max-width:800px){
+ html[dir] .page .hero-copy{left:auto;right:auto}
+ html[dir] .page .news-card{direction:var(--text-direction)}
+ html[dir] .page .news-card h3{padding-inline-end:18px}
+ html[dir] .page .card-arrow{inset-inline-end:10px}
+ html[dir] .page .bottom-stats .stat{padding-inline-start:45px;border-inline-end:0}
+ html[dir] .page .bottom-stats .icon{inset-inline-start:5px}
+ html[dir=rtl] .page .language-menu{right:auto;left:10px}
+}
+
+
+
+/* Editorial hero: independent photograph, no baked interface or masking bars. */
+html[dir] .page .field-photo{inset:0 0 0 auto;width:55%;height:100%;background-image:url('assets/hero-editorial-v2.webp');background-size:cover;background-position:42% center;clip-path:polygon(0 0,100% 0,100% 100%,10% 100%);direction:var(--text-direction)}
+html[dir=rtl] .page .field-photo{inset:0 auto 0 0;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
+html[dir] .page .field-photo:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#06121800 40%,#061218bf);pointer-events:none}
+html[dir] .hero>.field-photo:after{content:attr(aria-label);inset:auto;inset-inline-start:24px;top:clamp(88px,7cqw,130px);width:auto;height:auto;max-width:70%;padding:5px 12px;background:#081820b8;border:1px solid #ffffff30;border-radius:20px;color:#f1f5f7;font-family:inherit;font-size:12px;line-height:1.7;pointer-events:none}
+html[dir] .page .white-panel{background:linear-gradient(155deg,#fff,#f2f4f7)}
+html[dir] .page .white-panel:before{opacity:.2}
+html[dir] .page .white-panel:after{display:none}
+html[dir] .page .hero-stats .stat{border:1px solid #e1e5e9;background:#fff;box-shadow:0 8px 24px #10182006;border-radius:10px}
+html[dir] .page .hero-actions a{border-radius:8px}
+html[dir] .page .hero-actions .emergency{box-shadow:0 8px 22px #d4001720}
+html[dir] .page .field-quote{inset:auto 4% 24px auto;width:36%;padding:12px 18px;background:transparent;border:0;border-inline-start:2px solid #f00021;border-radius:0;box-shadow:none}
+html[dir=rtl] .page .field-quote{inset:auto auto 24px 4%}
+html[dir] .page .field-quote b{position:absolute;inset-inline-end:0;top:0;font-size:40px;opacity:.65}
+html[dir] .page .field-quote strong{font-size:clamp(20px,1.7cqw,29px);max-width:92%;line-height:1.65}
+html[dir] .page .field-quote small{font-size:clamp(12px,.95cqw,16px);max-width:92%;line-height:1.8;color:#e1e9ef;margin:4px 0 0}
+html[dir] .page .field-quote i{display:none}
+@media(max-width:800px){
+ html[dir] .page .hero{padding-bottom:320px}
+ html[dir] .page .field-photo{inset:auto 0 0;width:100%;height:320px;clip-path:none;background-size:cover;background-position:42% 44%}
+ html[dir] .hero>.field-photo:after{top:14px;inset-inline-start:18px;font-size:11px;padding:4px 10px}
+ html[dir] .page .field-quote{inset:auto 18px 16px;width:auto;padding:8px 14px}
+ html[dir] .page .field-quote strong{font-size:20px}
+ html[dir] .page .field-quote small{font-size:12px;line-height:1.7}
+ html[dir] .page .field-quote b{font-size:32px}
+}
+
+/* Structural correction: rectangular grid instead of the old diagonal cutout. */
+html[dir] .page>header{position:relative;inset:auto;height:auto;min-height:100px;align-items:stretch;background:#fff}
+html[dir] .page>header .brand{width:34%;padding:14px 28px;gap:14px;align-items:center}
+html[dir] .page>header .brand img{width:64px;height:76px}
+html[dir] .page>header .brand strong{font-size:clamp(16px,1.35cqw,24px);line-height:1.65}
+html[dir] .page>header .brand small{font-size:12px}
+html[dir] .page .nav-shell{width:66%;height:auto;min-height:100px;align-self:stretch;padding-inline:24px;border-radius:0;background:#0d151b;box-shadow:none}
+html[dir] .page .nav-shell:before,html[dir] .page .hero:before,html[dir] .page .white-panel{display:none}
+html[dir] .page .language-menu{top:calc(100% + 8px);z-index:100}
+html[dir] .page .hero{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));direction:ltr;height:auto;min-height:640px;padding:0;background:#f8fafb;isolation:isolate}
+html[dir] .page .hero-copy{position:relative;inset:auto;grid-column:1;grid-row:1;width:auto;min-width:0;padding:clamp(32px,3.4cqw,64px);display:flex;flex-direction:column;justify-content:center;align-self:stretch;text-align:start;background:#f8fafb}
+html[dir=rtl] .page .hero-copy{grid-column:2;left:auto;right:auto}
+html[dir] .page .field-photo{position:relative;inset:auto;grid-column:2;grid-row:1;width:100%;height:100%;min-height:640px;clip-path:none;background-size:cover;background-position:42% center}
+html[dir=rtl] .page .field-photo{grid-column:1;inset:auto;clip-path:none}
+html[dir] .hero>.field-photo:after{top:22px;inset-inline-start:22px}
+html[dir] .page .hero-copy .kicker{font-size:clamp(20px,1.8cqw,30px);line-height:1.7;margin-bottom:10px}
+html[dir] .page .hero-copy h1{font-size:clamp(36px,3.7cqw,64px);line-height:1.5;letter-spacing:-.025em;white-space:normal;overflow-wrap:normal;margin:0 0 14px}
+html[dir] .page .hero-copy h2{font-size:clamp(18px,1.6cqw,25px);line-height:1.85;white-space:normal}
+html[dir] .page .hero-copy .kurdish-line{font-size:clamp(14px,1.15cqw,18px);line-height:1.95;white-space:normal;margin:12px 0 24px}
+html[dir] .page .hero-actions{gap:12px;flex-wrap:wrap}
+html[dir] .page .hero-actions a{flex:1;min-width:0;width:auto;height:auto;min-height:54px;padding:12px 16px;font-size:clamp(13px,1.05cqw,17px);line-height:1.7;white-space:normal}
+html[dir] .page .hero-stats{width:100%;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;gap:8px}
+html[dir] .page .hero-stats .stat{height:auto;min-height:120px;min-width:0;padding:14px 8px}
+html[dir] .page .hero-stats .icon{width:30px;height:30px}
+html[dir] .page .hero-stats .stat b{font-size:26px;line-height:1.6}
+html[dir] .page .hero-stats .stat span{font-size:12px;line-height:1.8}
+html[dir] .page .hero-stats .stat small{font-size:10px;line-height:1.7}
+html[dir] .page .field-quote{z-index:1;inset:auto 4% 24px auto;width:40%;max-width:600px}
+html[dir=rtl] .page .field-quote{inset:auto auto 24px 4%}
+@media(max-width:1100px){
+ html[dir] .page>header .brand{width:60%}
+ html[dir] .page .nav-shell{width:40%;justify-content:flex-end}
+}
+@media(max-width:1000px){
+ html[dir] .page .hero{grid-template-columns:minmax(0,1fr);min-height:0}
+ html[dir] .page .hero-copy{grid-column:1;grid-row:1;padding:32px 24px}
+ html[dir] .page .field-photo{grid-column:1;grid-row:2;height:380px;min-height:380px;background-position:42% 42%}
+ html[dir] .page .field-quote{inset:auto 24px 22px;width:auto;max-width:none}
+ html[dir] .page .hero-copy h1{font-size:clamp(34px,5.3vw,48px)}
+ html[dir] .page .hero-copy .kicker{font-size:23px}
+}
+@media(max-width:800px){
+ html[dir] .page>header{min-height:96px}
+ html[dir] .page>header .brand{width:calc(100% - 156px);padding:12px;gap:8px}
+ html[dir] .page>header .brand img{width:44px;height:56px}
+ html[dir] .page>header .brand strong{font-size:13px;line-height:1.6}
+ html[dir] .page>header .brand small{font-size:10px}
+ html[dir] .page .nav-shell{width:156px;min-height:96px;padding:8px;background:#fff;border:0}
+ html[dir] .page .nav-shell .tools{gap:4px}
+ html[dir] .page .nav-shell .tools button{min-width:40px;min-height:44px;height:44px;width:40px;padding:6px}
+ html[dir] .page .nav-shell #language-open{min-width:44px;width:44px}
+ html[dir] .page .nav-shell #menu-open{margin-inline-start:0}
+ html[dir] .page .hero-copy{padding:28px 20px}
+ html[dir] .page .hero-copy h1{font-size:36px;line-height:1.65}
+ html[dir] .page .hero-copy h2{font-size:18px}
+ html[dir] .page .hero-copy .kurdish-line{font-size:15px}
+ html[dir] .page .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px}
+ html[dir] .page .hero-stats .stat{min-height:112px}
+ html[dir] .page .field-photo{height:340px;min-height:340px}
+}
+@media(max-width:480px){
+ html[dir] .page .hero-actions a{flex-basis:100%;font-size:14px}
+ html[dir] .page .hero-copy h1{font-size:32px}
+}

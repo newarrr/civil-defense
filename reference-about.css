@@ -1,0 +1,49 @@
+/* Match the user's about-page composition. Screenshot fragments supply only illustrations. */
+.reference-about{background:#fff}
+.reference-about .wrap{width:min(1304px,calc(100% - 15.1%))}
+.reference-about .utility-inner{min-height:44px}
+.reference-about .header-inner{min-height:88px}
+.reference-about .interior-banner{padding:14px 0;background:linear-gradient(110deg,#4a091c,#101b24 70%)}
+.reference-about .interior-banner:before{content:'';position:absolute;inset:0 auto 0 0;width:45.2%;background:url('reference-assets/about-reference.png') 0 16.9211%/221.3256% 430.2521% no-repeat;clip-path:polygon(0 0,100% 0,76% 100%,0 100%);pointer-events:none}
+.reference-about .interior-banner:after{width:8%;opacity:.72}
+.reference-about .interior-banner .wrap{min-height:202px}
+.reference-about .interior-banner h1{font-size:40px;line-height:1.3;max-width:70%;margin:0}
+.reference-about .interior-banner p{max-width:750px;font-size:16px;line-height:1.8;margin:8px 0 0}
+.reference-about .breadcrumbs{margin-bottom:9px}
+.reference-about .interior-banner .knowledge-entry{max-width:none;margin-top:18px;gap:9px}
+.reference-about .knowledge-entry a,.reference-about .knowledge-entry button{border-radius:4px;font-size:14px;padding:8px 13px;min-height:46px;background:#15252bc9}
+.reference-about .route-emblem,.reference-about .graphic-atlas{display:none!important}
+.reference-about .about-section{padding:18px 0 7px;margin:0;border:0;background:#fff}
+.reference-about .about-grid{display:grid;grid-template-columns:.86fr 1.14fr;column-gap:80px;row-gap:0;align-items:center}
+.reference-about .about-copy{display:contents}
+.reference-about .about-copy>.eyebrow{grid-column:2;grid-row:1;margin:0 0 9px;font-size:13px;align-self:end}
+.reference-about .about-copy>h2{grid-column:2;grid-row:2;font-size:clamp(32px,3.15vw,48px);line-height:1.35;margin:0;white-space:pre-line;align-self:center}
+.reference-about .about-copy>p{grid-column:2;grid-row:3;font-size:18px;line-height:1.9;margin:18px 0 12px;color:#627583;align-self:start}
+.reference-about .about-visual{display:block;grid-column:1;grid-row:1/4;min-height:0;aspect-ratio:526/252;border-radius:7px;border:1px solid #dbe1e6;box-shadow:none;background-image:url('reference-assets/about-reference.png');background-size:292.0152% 406.3492%;background-position:11.48515% 51.03627%;background-repeat:no-repeat}
+.reference-about .about-visual>*{visibility:hidden}
+.reference-about .about-visual .about-tag{visibility:visible;top:12px;right:12px;min-width:40%;min-height:32px;padding:5px 9px;background:#122531e8;justify-content:flex-start;border-radius:4px;color:#fff}
+.reference-about .about-visual .reference-photo-note{visibility:visible;position:absolute;bottom:0;left:0;right:0;padding:5px 12px;background:#09151c;color:#fff;font-size:10px;border-radius:3px;line-height:1.5}
+.reference-about .values{grid-column:1/-1;grid-row:4;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));direction:rtl;margin:26px 0 0;gap:0}
+.reference-about .values>div{align-items:center;text-align:center;padding:0 15px;border-inline-end:1px solid #d6dde3;min-width:0}
+.reference-about .values>div:last-child{border:0}
+.reference-about .values .icon{width:34px;height:34px;margin-bottom:8px;color:#008457}
+.reference-about .values strong{font-size:19px;line-height:1.6}
+.reference-about .values small{font-size:16px;line-height:1.8;color:#647786;margin-top:3px}
+.reference-about .emergency-strip{margin-top:0;padding:16px 0;background:linear-gradient(105deg,#bb001f,#a60022)}
+.reference-about .emergency-strip h2{font-size:30px;line-height:1.5}
+.reference-about .emergency-strip p{font-size:14px}
+.reference-about .emergency-strip a strong{font-size:66px;line-height:1}
+.reference-about .emergency-strip a span{font-size:17px;font-weight:700}
+.reference-about footer{padding-top:0;background:#0b1b24}
+.reference-about .footer-main{padding:18px 0 14px}
+.reference-about .footer-bottom{padding-block:10px;line-height:1.6}
+.reference-about .emergency-strip a>span:last-child{display:none}
+html[dir=ltr] .reference-about .values{direction:ltr}
+html[dir=ltr] .reference-about .about-grid>*{direction:ltr}
+@media(min-width:1800px){.reference-about .interior-banner{min-height:238px}}
+@media(max-width:1000px){.reference-about .wrap{width:calc(100% - 48px)}.reference-about .about-grid{column-gap:32px}.reference-about .about-copy>h2{font-size:34px}.reference-about .about-copy>p{font-size:16px}.reference-about .values strong{font-size:17px}.reference-about .values small{font-size:14px}.reference-about .interior-banner h1{font-size:34px}}
+@media(max-width:700px){.reference-about .wrap{width:calc(100% - 32px)}.reference-about .interior-banner{padding:24px 0}.reference-about .interior-banner:before{width:100%;opacity:.24;background-size:221.3256% 430.2521%;background-position:0 16.9211%}.reference-about .interior-banner .wrap{min-height:0}.reference-about .interior-banner h1{max-width:100%;font-size:30px}.reference-about .interior-banner p{font-size:16px}.reference-about .knowledge-entry{gap:7px}.reference-about .knowledge-entry a,.reference-about .knowledge-entry button{font-size:13px;padding:8px 10px}.reference-about .about-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}.reference-about .about-copy{display:contents}.reference-about .about-visual{order:3;display:block;width:100%;margin:20px 0 0;flex:none}.reference-about .about-copy>.eyebrow{order:0;align-self:stretch;margin:0 0 10px}.reference-about .about-copy>h2{order:1;font-size:32px;align-self:stretch}.reference-about .about-copy>p{order:2;font-size:17px;align-self:stretch;margin:12px 0 0}.reference-about .values{order:4;margin-top:24px;gap:16px;grid-template-columns:1fr}.reference-about .values>div{padding:14px;border:0;border-bottom:1px solid #e0e5e9}.reference-about .values strong{font-size:19px}.reference-about .values small{font-size:16px}.reference-about .emergency-strip h2{font-size:25px}.reference-about .emergency-strip a strong{font-size:54px}.reference-about .emergency-strip a span{font-size:15px}}
+@media print{.reference-about .interior-banner:before,.reference-about .reference-photo-note{display:none}.reference-about .about-grid{display:block}.reference-about .about-copy{display:block}.reference-about .about-visual{display:none}.reference-about .interior-banner,.reference-about .emergency-strip{background:#fff;color:#000}.reference-about .values{margin-top:20px}.reference-about .wrap{width:100%}}
+
+@media(min-width:1201px){.reference-about .header .brand strong{font-size:18px;max-width:300px}.reference-about .header .brand small{font-size:14px}.reference-about .header nav a{font-size:14px}.reference-about .header nav{gap:20px}}
+.reference-about .emergency-strip>.wrap>.emergency-icon{order:3}.reference-about .emergency-strip>.wrap>div:not(.emergency-icon){order:1;flex:1}.reference-about .emergency-strip a{order:2;margin-inline-start:0}.reference-about .emergency-strip a>.icon{display:none}.reference-about footer .brand strong{font-size:19px}

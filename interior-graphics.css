@@ -1,0 +1,48 @@
+/* Shared graphic design for internal pages only. Flat SVG; no 3D. */
+.graphic-icon{display:inline-grid;place-items:center;width:64px;height:64px;border:1px solid #e6bfc7;border-radius:18px;background:#fff0f3;color:#ad0027;flex-shrink:0}
+.graphic-icon svg{width:38px;height:38px}
+.route-emblem{position:absolute;inset-inline-end:20px;top:12px;width:300px;height:220px;color:#dba2af;pointer-events:none}
+.emblem-orbit{position:absolute;inset:0;width:100%;height:100%;opacity:.45}
+.emblem-symbol{position:absolute;inset:60px 105px;display:grid;place-items:center;width:90px;height:100px;color:#fff}
+.emblem-symbol svg{width:90px;height:90px;filter:none}
+.interior-page .interior-banner{padding-block:38px;background:linear-gradient(115deg,#590f25 0%,#171e2a 48%,#0c1922 100%)}
+.interior-page .interior-banner .wrap{min-height:210px}
+.interior-page .interior-banner h1{font-size:clamp(30px,3.1vw,46px);letter-spacing:-.6px;line-height:1.5;max-width:calc(100% - 330px)}
+.interior-page .interior-banner p{font-size:16px;line-height:1.95;max-width:min(760px,calc(100% - 330px));color:#e0e5ec}
+.interior-page .interior-banner .knowledge-entry{max-width:calc(100% - 320px);gap:8px;margin-top:24px}
+.interior-page .knowledge-entry a,.interior-page .knowledge-entry button{background:#ffffff0c;border-color:#8994a2;border-radius:8px;backdrop-filter:none}
+.interior-page .knowledge-entry a:hover,.interior-page .knowledge-entry button:hover{background:#fff;color:#8f0021;border-color:#fff}
+.interior-page .graphic-atlas{padding-block:36px 12px}
+.atlas-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
+.graphic-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:800;color:#a80027;letter-spacing:.3px}
+.graphic-eyebrow:before{content:'';width:26px;height:2px;background:currentColor}
+.atlas-heading h2{font-size:clamp(25px,2.4vw,34px);line-height:1.5;margin:7px 0;color:#122330}
+.atlas-heading p{font-size:16px;color:#526271;max-width:780px;margin:8px 0}
+.atlas-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.atlas-card{position:relative;display:flex;flex-direction:column;min-width:0;gap:14px;padding:26px;border:1px solid #d5dee6;border-radius:16px;background:#fff;color:#17232d;text-decoration:none;box-shadow:0 8px 28px #11233207;overflow:hidden}
+.atlas-card:before{content:'';height:3px;position:absolute;inset:0 0 auto;background:linear-gradient(90deg,#e5b8c2,#b00029)}
+.atlas-card:hover{border-color:#ab0027;box-shadow:0 10px 30px #48132a12}
+.atlas-card-top{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.atlas-card-top bdi{font-family:system-ui;font-size:32px;line-height:1;color:#697e8e;font-weight:600}
+.atlas-card h3{font-size:21px;line-height:1.7;margin:0;color:#142b3a}
+.atlas-card p{font-size:15px;line-height:1.95;color:#526271;margin:0}
+.atlas-action{display:block;border-top:1px solid #e0e6eb;margin-top:auto;padding-top:14px;font-size:15px;font-weight:700;color:#9d0024;min-height:44px}
+.atlas-card:focus-visible{outline:3px solid #a35e00;outline-offset:4px}
+.interior-page .about-section{margin-top:24px;border-block:1px solid #e2e7ec;background:#fff}
+.interior-page .about-visual{border-radius:16px;border:1px solid #ccd5df;box-shadow:0 10px 30px #1123320d}
+.interior-page .values{gap:18px}
+.interior-page .service-card,.interior-page .awareness-card,.interior-page .contact-card{border-radius:14px;border:1px solid #d5dfe7;box-shadow:0 6px 22px #132a3e07}
+.interior-page .service-icon{width:62px;height:62px;border-radius:16px;border:1px solid #e8bec9}
+.interior-page .route-note{padding:18px 22px;border-radius:10px;font-size:15px}
+.interior-page .contact-card .phone-number{font-family:system-ui;color:#a70026}
+body[data-page] .intro{position:relative;overflow:hidden;padding-inline-end:340px;background:linear-gradient(115deg,#fff,#fff8fa);border-radius:14px}
+body[data-page] .intro .route-emblem{color:#ad0027;top:50%;transform:translateY(-50%)}
+body[data-page] .intro .emblem-symbol{color:#ad0027}
+body[data-page] .section{border-radius:14px;border-color:#d9e1e8;box-shadow:0 4px 20px #132a3e04}
+body[data-page] .card{border-radius:12px;padding:24px;gap:12px;box-shadow:0 4px 16px #12233205}
+body[data-page] .card .graphic-icon{margin-bottom:3px}
+body[data-page] .steps li{border-radius:10px;background:linear-gradient(100deg,#fff,#fffafb)}
+body[data-page] .toc{border-radius:12px;border-top:3px solid #a80027}
+@media(max-width:1000px){.atlas-grid{gap:14px}.atlas-card{padding:20px}.interior-page .interior-banner h1{max-width:calc(100% - 250px)}.interior-page .interior-banner p{max-width:calc(100% - 250px)}.interior-page .interior-banner .knowledge-entry{max-width:calc(100% - 240px)}.route-emblem{width:240px;inset-inline-end:0}.emblem-symbol{inset-inline-start:80px;width:80px}.emblem-symbol svg{width:80px}}
+@media(max-width:800px){.interior-page .interior-banner{padding-block:28px}.interior-page .interior-banner .wrap{min-height:0}.interior-page .interior-banner h1,.interior-page .interior-banner p,.interior-page .interior-banner .knowledge-entry{max-width:100%}.interior-banner .route-emblem,body[data-page] .intro .route-emblem{display:none}.atlas-grid{grid-template-columns:1fr}.atlas-card{padding:22px}.atlas-card h3{font-size:21px}.atlas-card p{font-size:16px}.interior-page .graphic-atlas{padding-top:28px}.atlas-heading p{font-size:16px}body[data-page] .intro{padding-inline-end:20px}.route-emblem{display:none}}
+@media print{.route-emblem,.graphic-atlas{display:none!important}body[data-page] .intro{padding:12px;background:white}body[data-page] .section,.atlas-card{box-shadow:none}.graphic-icon{width:38px;height:38px}.graphic-icon svg{width:26px;height:26px}.interior-page .interior-banner{background:white;color:#000}.interior-page .interior-banner h1,.interior-page .interior-banner p{max-width:100%;color:#000}.interior-page .interior-banner .wrap{min-height:0}}

@@ -1,0 +1,7 @@
+/* Portal-only links. The frozen homepage loads none of these files. */
+(() => {
+const labels={how:['كيف يعمل الدفاع المدني؟','بەرگرییا شارستانی چەوا کار دکەت؟','بەرگری شارستانی چۆن کار دەکات؟','How does civil defense work?'],safety:['دليل الوقاية والسلامة','ڕێبەرا پاراستن و سەلامەتیێ','ڕێبەری خۆپاراستن و سەلامەتی','Prevention and safety guide'],sources:['مصادرنا وكيف نتحقق','ژێدەرێن مە و پشتڕاستکرن','سەرچاوە و پشتڕاستکردنەوە','Sources and verification'],all:['مركز المعرفة','ناڤەندا زانیاریێ','ناوەندی زانیاری','Knowledge center'],print:['طباعة A4','چاپکرنا A4','چاپکردنی A4','Print A4']};
+const bar=document.createElement('nav');bar.className='knowledge-entry no-print';document.querySelector('.interior-banner .wrap').append(bar);
+function render(){const locale=document.documentElement.dataset.locale||'ar',index={ar:0,badini:1,sorani:2,en:3}[locale];bar.setAttribute('aria-label',labels.all[index]);bar.replaceChildren();for(const [key,file] of Object.entries({how:'how-it-works.html',safety:'safety-guide.html',sources:'sources.html',all:'knowledge.html'})){const a=document.createElement('a');a.href=file+'?lang='+locale;a.textContent=labels[key][index];bar.append(a);}const button=document.createElement('button');button.textContent=labels.print[index];button.addEventListener('click',()=>window.print());bar.append(button);}
+new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['data-locale']});render();
+})();
