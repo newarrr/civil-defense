@@ -134,3 +134,11 @@ html[dir] .reference-home .page .hero-copy{max-width:100%;min-width:0}
 html[dir] .reference-home .page .hero-copy h1>span{max-width:100%;white-space:normal;overflow-wrap:normal}
 html[dir] .reference-home .page .sections-primary{overflow:visible}
 html[dir] .reference-home .page .sections-panel{position:absolute}
+/* English reads from the photo edge; keep its text inside the clear right column. */
+@media(min-width:901px){
+ html[dir] .reference-home.en .page .hero-copy{left:68cqw;right:2.5cqw}
+ html[dir] .reference-home.en .page .hero-copy .kicker{margin:0 0 .6cqw}
+ html[dir] .reference-home.en .page .hero-copy h1{font-size:2.65cqw;line-height:1.25;margin:0 0 1.2cqw}
+ html[dir] .reference-home.en .page .hero-copy h1>span:nth-child(2){line-height:1.35}
+ html[dir] .reference-home.en .page .hero-copy h2{margin:0}
+}
