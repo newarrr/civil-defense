@@ -53,3 +53,51 @@ body.sections-dialog-open{overflow:hidden}
  .nav-shell #menu-open{margin-inline-start:12px;border-radius:6px;width:44px}
  .language-menu{top:calc(clamp(64px,4.7cqw,86px) + 8px)}
 }
+
+/* Top menu polish — same colours and type as the original design. */
+.sections-panel:not([hidden]){animation:sections-drop .18s ease-out}
+@keyframes sections-drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.sections-grid a{transition:background-color .15s,border-color .15s,transform .15s}
+.sections-grid a:hover{border-color:#c70026;transform:translateY(-1px)}
+.sections-grid a:hover .sections-link-arrow{color:#c70026}
+.sections-news-link{border-inline-start:3px solid #c70026 !important}
+.sections-news-link .sections-link-arrow{font-size:12px;color:#5b6670;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.sections-panel:not([hidden]){animation:none}.sections-grid a{transition:none}.sections-grid a:hover{transform:none}}
+
+/* Dropdown cards — icon chip, label, red chevron (approved mockup). Same specificity as reference-home-layout.css. */
+html[dir] body.reference-home .page .sections-panel{border:1px solid #ebe6e0;border-top:0;border-radius:18px;padding:22px 24px 24px;box-shadow:0 24px 60px #0b1a2a33,0 2px 6px #0b1a2a14}
+html[dir] body.reference-home .page .sections-panel-head h2{position:relative;font-size:21px;padding-bottom:6px}
+html[dir] body.reference-home .page .sections-panel-head h2:after{content:'';position:absolute;bottom:0;inset-inline-start:0;width:64px;height:3px;border-radius:3px;background:#d0102b}
+html[dir] body.reference-home .page .sections-panel .sections-close{flex:0 0 40px;width:40px;height:40px;border-radius:12px;background:#fff;border-color:#e3ded8;transition:background-color .15s,border-color .15s}
+html[dir] body.reference-home .page .sections-panel .sections-close:hover{background:#fff2f4;border-color:#d0102b;color:#b0001f}
+html[dir] body.reference-home .page .sections-panel .sections-note{display:flex;align-items:center;gap:10px;font-size:13px;padding:13px 16px;margin-bottom:16px;border-radius:12px;background:#f7f4f0}
+html[dir] body.reference-home .page .sections-panel .sections-note svg{flex:0 0 22px;width:22px;height:22px;color:#b0001f}
+html[dir] body.reference-home .page .sections-panel .sections-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+html[dir] body.reference-home .page .sections-panel .sections-grid a{justify-content:flex-start;gap:14px;min-height:64px;padding:11px 14px;font-weight:700;font-size:15px;border-color:#ebe6e0;border-radius:14px;background:#fff;transition:border-color .15s,box-shadow .15s,transform .15s}
+html[dir] body.reference-home .page .sections-panel .sections-grid a:hover{border-color:#e8a4ae;box-shadow:0 6px 18px #c7002614;transform:translateY(-1px);background:#fff;color:#16191c}
+html[dir] body.reference-home .page .sections-panel .sections-category{border-radius:10px}
+.sections-link-icon{flex:0 0 40px;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:#fdecee;color:#c70026}
+.sections-link-icon svg{width:21px;height:21px}
+.sections-link-label{flex:1;min-width:0}
+.sections-link-arrow{margin-inline-start:auto}
+.sections-chevron{display:grid;place-items:center;width:22px;height:22px;color:#d0102b;transition:transform .15s}
+.sections-chevron svg{width:20px;height:20px;stroke-width:2.4}
+[dir=ltr] .sections-chevron svg{transform:scaleX(-1)}
+.sections-grid a:hover .sections-chevron{transform:translateX(-3px)}
+[dir=ltr] .sections-grid a:hover .sections-chevron{transform:translateX(3px)}
+.sections-news-link .sections-link-arrow{font-size:12px;color:#5b6670;white-space:nowrap}
+.sections-dialog nav a{justify-content:flex-start;gap:14px;min-height:60px;border-radius:14px;font-weight:700}
+/* History link is added by history-entry.js (label must stay first child), so its icon and chevron are drawn in CSS. */
+:is(.sections-grid,.sections-mobile-links) a[data-history-link]::before{content:'';flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:#fdecee url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23c70026%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%205.5C4.5%204%207.5%204%2012%206c4.5-2%207.5-2%2010-.5V19c-2.5-1.5-5.5-1.5-10%20.5-4.5-2-7.5-2-10-.5Z%22%2F%3E%3Cpath%20d%3D%22M12%206v13.5%22%2F%3E%3C%2Fsvg%3E") center/21px no-repeat}
+:is(.sections-grid,.sections-mobile-links) a[data-history-link]>span:first-child{flex:1;min-width:0}
+:is(.sections-grid,.sections-mobile-links) a[data-history-link]>span:last-child{flex:0 0 22px;height:22px;font-size:0;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23d0102b%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m15%206-6%206%206%206%22%2F%3E%3C%2Fsvg%3E") center/20px no-repeat}
+[dir=ltr] :is(.sections-grid,.sections-mobile-links) a[data-history-link]>span:last-child{transform:scaleX(-1)}
+/* Active menu tab: soft pill with red underline. */
+html[dir] body.reference-home .page .sections-trigger[aria-expanded=true]{background:#fdecee;border-radius:12px 12px 0 0;padding-inline:12px;color:#c80019}
+html[dir] body.reference-home .page .sections-trigger[aria-expanded=true]:before{content:'';display:block;position:absolute;bottom:0;inset-inline:22%;height:3px;border-radius:3px;background:#d0102b}
+/* Dark theme */
+html[data-theme=dark] .sections-link-icon,html[data-theme=dark] :is(.sections-grid,.sections-mobile-links) a[data-history-link]::before{background-color:#3a1d24;color:#ff8193}
+html[data-theme=dark][dir] body.reference-home .page .sections-trigger[aria-expanded=true]{background:#3a1d24;color:#ff8193}
+html[data-theme=dark] .sections-chevron{color:#ff6579}
+@media (max-width:560px){html[dir] body.reference-home .page .sections-panel .sections-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.sections-chevron{transition:none}html[dir] body.reference-home .page .sections-panel .sections-grid a{transition:none}html[dir] body.reference-home .page .sections-panel .sections-grid a:hover,.sections-grid a:hover .sections-chevron{transform:none}}
