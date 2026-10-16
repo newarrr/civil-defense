@@ -2,13 +2,13 @@
 (() => {
  'use strict';
  const words={
- brand:['مديرية الدفاع المدني','بەڕێوەبەرایەتی پاراستنی','بەڕێوەبەرایەتی پاراستنی','Civil Defense Directorate'],
+ brand:['مديرية الدفاع المدني','بەرگرییا شارستانی','بەرگری شارستانی','Civil Defense Directorate'],
  duhok:['محافظة دهوك','پارێزگەها دهۆکێ','پارێزگای دهۆک','Duhok Governorate'],
  kicker:['شركاء المجتمع في السلامة','هاوپەیمان لەگەڵ کۆمەڵگا','هاوپەیمان لەگەڵ کۆمەڵگا','Together with our community'],
  title:['لحماية','بۆ پاراستنی','بۆ پاراستنی','Protecting'],
  life:['الحياة','ژیان','ژیان','lives'],
  titleEnd:['وسلامة المجتمع','و سەلامەتی کۆمەڵگا','و سەلامەتی کۆمەڵگا','and our community'],
- intro:['مديرية الدفاع المدني في محافظة دهوك. دائماً في خدمتكم للوقاية والاستعداد والمساعدة في أوقات الطوارئ والحوادث.','بەڕێوەبەرایەتی پاراستنی پارێزگەها دهۆکێ\nهەمیشە لە خزمەتدا بۆ پێشگیری، ئامادەبوون\nو هاوکاری لە کاتی کارەسات و حادثەکاندا.','بەڕێوەبەرایەتی پاراستنی پارێزگای دهۆک\nهەمیشە لە خزمەتدا بۆ پێشگیری، ئامادەبوون\nو هاوکاری لە کاتی کارەسات و ڕووداوەکاندا.','Duhok Civil Defense Directorate. Here to help with prevention, preparedness and support during emergencies and incidents.'],
+ intro:['مديرية الدفاع المدني في محافظة دهوك. دائماً في خدمتكم للوقاية والاستعداد والمساعدة في أوقات الطوارئ والحوادث.','بەرگرییا شارستانی یا پارێزگەها دهۆکێ\nهەمیشە لە خزمەتدا بۆ پێشگیری، ئامادەبوون\nو هاوکاری لە کاتی کارەسات و حادثەکاندا.','بەرگری شارستانیی پارێزگای دهۆک\nهەمیشە لە خزمەتدا بۆ پێشگیری، ئامادەبوون\nو هاوکاری لە کاتی کارەسات و ڕووداوەکاندا.','Duhok Civil Defense Directorate. Here to help with prevention, preparedness and support during emergencies and incidents.'],
  emergency:['اتصال الطوارئ','پەیوەندییا فریاکەوتن','پەیوەندیی فریاکەوتن','Emergency call'],
  rescue:['الإنقاذ والمساعدة','ڕزگارکردن و هاوکاری','ڕزگارکردن و هاوکاری','Rescue and support'],
  rescueDesc:['في أوقات الطوارئ والحوادث','لەکاتی کارەسات و حادثەکاندا','لە کاتی کارەسات و ڕووداوەکاندا','During emergencies and incidents'],
@@ -65,6 +65,8 @@
  function renderCommunity(){
   document.querySelectorAll('[data-text="brand"]').forEach(el=>el.textContent=t('brand'));
   document.querySelector('[data-text="duhok"]').textContent=t('duhok');
+  document.querySelector('.brand img').alt=t('brand')+' — '+t('duhok');
+  document.title=t('brand')+' — '+t('duhok');
   const kicker=document.querySelector('.hero-copy .kicker');kicker.removeAttribute('aria-hidden');kicker.textContent=t('kicker');
   const h1=document.querySelector('.hero-copy h1');h1.removeAttribute('aria-label');h1.innerHTML=`<span>${escape(t('title'))} <em>${escape(t('life'))}</em></span><span>${escape(t('titleEnd'))}</span>`;
   document.querySelector('.hero-copy h2').innerHTML=lines('intro');
