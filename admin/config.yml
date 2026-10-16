@@ -1,0 +1,175 @@
+# لوحة إدارة الموقع — Sveltia CMS (يعمل داخل GitHub Pages بدون خادم)
+# الدخول: بحساب GitHub له صلاحية الكتابة على المستودع newarrr/civil-defense
+backend:
+  name: github
+  repo: newarrr/civil-defense
+  branch: main
+  commit_messages:
+    create: "محتوى: إنشاء {{collection}} «{{slug}}»"
+    update: "محتوى: تحديث {{collection}} «{{slug}}»"
+    delete: "محتوى: حذف {{collection}} «{{slug}}»"
+    uploadMedia: "صور: رفع {{path}}"
+    deleteMedia: "صور: حذف {{path}}"
+
+site_url: https://newarrr.github.io/civil-defense/
+display_url: https://newarrr.github.io/civil-defense/
+logo_url: ../assets/civil-defense-logo.png
+locale: ar
+
+media_folder: assets/uploads
+public_folder: assets/uploads
+
+collections:
+  # ---------------------------------------------------------------- الأخبار
+  - name: news
+    label: الأخبار والفعاليات
+    description: تظهر في بطاقات الأخبار في الصفحة الرئيسية وفي قائمة «المصادر والتحديثات».
+    files:
+      - name: news
+        label: الأخبار
+        file: content/news.json
+        format: json
+        fields:
+          - name: items
+            label: الأخبار (الأحدث أولًا)
+            label_singular: خبر
+            widget: list
+            summary: "{{fields.date}} — {{fields.ar.title}}"
+            add_to_top: true
+            fields:
+              - { name: slug, label: "معرّف الرابط (حروف إنجليزية وشرطات، مثل: training-day-2026)", widget: string, pattern: ["^[a-z0-9-]+$", "حروف إنجليزية صغيرة وأرقام وشرطات فقط"] }
+              - { name: date, label: التاريخ, widget: datetime, time_format: false, format: YYYY-MM-DD, date_format: YYYY-MM-DD }
+              - { name: image, label: صورة الغلاف, widget: image, required: false }
+              - { name: video, label: "رابط فيديو YouTube أو Vimeo (اختياري)", widget: string, required: false }
+              - name: ar
+                label: العربية
+                widget: object
+                fields:
+                  - { name: title, label: العنوان, widget: string }
+                  - { name: excerpt, label: ملخص قصير, widget: text, required: false }
+                  - { name: body, label: "النص (سطر فارغ = فقرة جديدة، وسطر يبدأ بـ - = نقطة)", widget: text, required: false }
+              - name: badini
+                label: بادینی
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: title, label: ناڤ, widget: string, required: false }
+                  - { name: excerpt, label: کورتی, widget: text, required: false }
+                  - { name: body, label: دەق, widget: text, required: false }
+              - name: sorani
+                label: سۆرانی
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: title, label: ناونیشان, widget: string, required: false }
+                  - { name: excerpt, label: کورتە, widget: text, required: false }
+                  - { name: body, label: دەق, widget: text, required: false }
+              - name: en
+                label: English
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: title, label: Title, widget: string, required: false }
+                  - { name: excerpt, label: Summary, widget: text, required: false }
+                  - { name: body, label: "Text (blank line = new paragraph)", widget: text, required: false }
+
+  # ------------------------------------------------------------- التنبيهات
+  - name: alerts
+    label: التنبيهات العامة
+    description: شريط ملوّن أعلى كل الصفحات. يختفي تلقائيًا بعد وقت الانتهاء أو عند إلغاء التفعيل.
+    files:
+      - name: alerts
+        label: التنبيهات
+        file: content/alerts.json
+        format: json
+        fields:
+          - name: items
+            label: التنبيهات
+            label_singular: تنبيه
+            widget: list
+            summary: "{{fields.level}} — {{fields.ar.title}}"
+            fields:
+              - { name: active, label: مفعّل, widget: boolean, default: true }
+              - name: level
+                label: المستوى
+                widget: select
+                default: advisory
+                options:
+                  - { label: "إرشادي (أزرق)", value: advisory }
+                  - { label: "مراقبة (برتقالي)", value: watch }
+                  - { label: "تحذير (أحمر)", value: warning }
+              - { name: expires, label: ينتهي في, widget: datetime, required: false }
+              - name: ar
+                label: العربية
+                widget: object
+                fields:
+                  - { name: title, label: العنوان, widget: string }
+                  - { name: message, label: الرسالة, widget: text }
+              - name: badini
+                label: بادینی
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: title, label: ناڤ, widget: string, required: false }
+                  - { name: message, label: نامە, widget: text, required: false }
+              - name: sorani
+                label: سۆرانی
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: title, label: ناونیشان, widget: string, required: false }
+                  - { name: message, label: پەیام, widget: text, required: false }
+              - name: en
+                label: English
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: title, label: Title, widget: string, required: false }
+                  - { name: message, label: Message, widget: text, required: false }
+
+  # ------------------------------------------------------------- القائمة
+  - name: menu
+    label: القائمة العلوية
+    description: روابط إضافية داخل قوائم الشريط العلوي، ومكان آخر الأخبار.
+    files:
+      - name: menu
+        label: القائمة العلوية
+        file: content/menu.json
+        format: json
+        fields:
+          - name: latestNews
+            label: آخر الأخبار في القائمة
+            widget: object
+            fields:
+              - { name: show, label: إظهار, widget: boolean, default: true }
+              - name: group
+                label: في قائمة
+                widget: select
+                default: sources
+                options: &groups
+                  - { label: عن الدفاع المدني, value: about }
+                  - { label: دليل الخدمات, value: services }
+                  - { label: التوعية والوقاية, value: safety }
+                  - { label: المصادر والتحديثات, value: sources }
+                  - { label: التواصل والمساعدة, value: contact }
+              - { name: count, label: العدد, widget: number, value_type: int, min: 1, max: 6, default: 3 }
+          - name: links
+            label: روابط إضافية
+            label_singular: رابط
+            widget: list
+            required: false
+            summary: "{{fields.group}} — {{fields.ar}}"
+            fields:
+              - { name: group, label: القائمة, widget: select, options: *groups }
+              - { name: url, label: "الرابط (مثل training.html أو tel:115 أو https://...)", widget: string, pattern: ["^(https://\\S+|tel:[+0-9]+|[a-z0-9-]+\\.html(#[A-Za-z0-9_-]+)?)$", "صفحة من الموقع أو tel: أو رابط https://"] }
+              - name: position
+                label: المكان
+                widget: select
+                default: end
+                options:
+                  - { label: بعد الروابط الأصلية, value: end }
+                  - { label: قبل الروابط الأصلية, value: start }
+              - { name: ar, label: العنوان بالعربية, widget: string }
+              - { name: badini, label: ناڤ ب بادینی, widget: string, required: false }
+              - { name: sorani, label: ناونیشان بە سۆرانی, widget: string, required: false }
+              - { name: en, label: Title in English, widget: string, required: false }

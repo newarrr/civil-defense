@@ -52,10 +52,10 @@
     return u.pathname.split('/').pop() + u.search + u.hash;
   };
   const item = (key, route = routes[key]) => ({ label: text(key), route });
-  // Links and latest news managed in the admin panel (window.CD_CMS, injected by the server).
-  const cmsMenu = (window.CD_CMS && window.CD_CMS.menu) || { links: [], latestNews: { show: false } };
-  const cmsNews = (window.CD_CMS && window.CD_CMS.news) || [];
+  // Links and latest news edited in /admin (window.CD_CMS, loaded by cms-content.js).
   function cmsExtras(id) {
+    const cmsMenu = (window.CD_CMS && window.CD_CMS.menu) || { links: [], latestNews: { show: false } };
+    const cmsNews = (window.CD_CMS && window.CD_CMS.news) || [];
     const own = cmsMenu.links.filter(l => l.group === id).map(l => ({ label: value(l.label) || l.label[0], route: l.url, position: l.position, cms: true }));
     const ln = cmsMenu.latestNews;
     const news = ln.show && ln.group === id ? cmsNews.slice(0, ln.count).map(n => ({ label: value(n.title) || n.title[0], route: 'index.html#news-' + n.slug, date: n.publishedAt, news: true })) : [];
