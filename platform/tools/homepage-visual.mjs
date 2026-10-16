@@ -1,4 +1,4 @@
-import { chromium } from 'playwright';
+import { chromium, firefox } from 'playwright';
 import sharp from 'sharp';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -7,20 +7,21 @@ import { serveLegacy } from './static-server.mjs';
 const out = new URL('../test-results/homepage/', import.meta.url);
 const widths = [320, 390, 768, 1024, 1440, 1920, 2560, 3840];
 const selectors = ['.page', '.page>header', '.brand', '.brand img', '.hero', '.hero-copy', '.hero-copy h1', '.field-photo', '.service-strip', '.reference-features', '.site-footer'];
-const report = { baselineCommit: manifest.commit, freeze: checkFreeze(), browser: null, cases: [], errors: [], requests: [], externalRequestsBlocked: true };
+const report = { baselineCommit: manifest.commit, freeze: checkFreeze(), browser: null, cases: [], errors: [], requests: [], externalRequestsBlocked: true, cache: 'Only verified byte-identical images/fonts share the browser cache; HTML/CSS/JS are no-store' };
 let base, candidate, browser;
 try {
   await mkdir(out, { recursive: true });
   // Same origin and URL keep the image decoder/cache path identical. No HTTP caching:
   // every navigation fetches the selected Git or worktree bytes via the server.
   base = await serveLegacy({ base: true, compare: true }); candidate = { origin: base.origin };
-  browser = await chromium.launch({ headless: true, args: ['--disable-gpu', '--force-color-profile=srgb'], ...(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {}) });
+  const chromiumDiagnostic = process.env.VISUAL_BROWSER === 'chromium';
+  report.browserFamily = chromiumDiagnostic ? 'chromium (diagnostic)' : 'firefox';
+  browser = await (chromiumDiagnostic ? chromium : firefox).launch(chromiumDiagnostic ? { headless: true, args: ['--disable-gpu', '--force-color-profile=srgb'], ...(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {}) } : { headless: true });
   report.browser = browser.version();
   for (const locale of ['badini', 'sorani', 'ar', 'en']) for (const theme of ['light', 'dark']) for (const width of widths) {
     const name = `${locale}-${theme}-${width}`;
     const shots = [], metrics = [];
     const context = await browser.newContext({ viewport: { width, height: 1000 }, deviceScaleFactor: 1, reducedMotion: 'reduce', locale: 'en-US', timezoneId: 'Asia/Baghdad', colorScheme: 'light' });
-    await context.route('**/*', route => [base.origin, candidate.origin].some(origin => route.request().url().startsWith(origin + '/')) ? route.continue() : route.abort());
     const page = await context.newPage();
     let activeVersion;
     page.on('pageerror', error => report.errors.push({ name, version: activeVersion, error: error.message }));

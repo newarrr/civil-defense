@@ -22,7 +22,7 @@ Node 24، ثم من هذا المجلد:
 
 ```sh
 npm ci --ignore-scripts
-npx playwright install chromium
+npx playwright install chromium firefox
 npm run check
 npm run test:review
 npm run test:visual
@@ -36,10 +36,9 @@ npm run review
 ```powershell
 $env:PW_CHANNEL='msedge'
 npm run test:review
-npm run test:visual
 ```
 
-CI يستعمل إصدار Chromium التابع لإصدار Playwright المثبت في lockfile؛ baseline ونسخة الفرع يُعرضان في المتصفح نفسه داخل كل تشغيل. صور الموقع المنشور ملتقطة بEdge ومفصولة عن مقارنات CI عبر الأنظمة.
+المقارنة البصرية تستعمل Firefox المثبت مع إصدار Playwright في lockfile، واختبارات المعاينة تستعمل Chromium. baseline ونسخة الفرع يُعرضان في المتصفح نفسه داخل كل تشغيل. صور الموقع المنشور ملتقطة بEdge ومفصولة عن مقارنات CI عبر الأنظمة. يحتاج Firefox على Windows مكتبات Visual C++ runtime؛ لم نثبت برامج نظام لتجاوز هذا الشرط، وتشغيل المقارنة المرجعي على CI Ubuntu. للتشخيص في Chromium فقط يمكن ضبط `VISUAL_BROWSER=chromium`، لكن رُصد تفاوت متقطع في تصغير PNG داخل هذا المحرك مع تطابق المصدر والقياسات، لذلك لا تُعتمد نتائجه الصارمة كبوابة بديلة دون معالجة ذلك.
 
 ## حدود البيانات
 

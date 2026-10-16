@@ -12,6 +12,8 @@ export async function serveLegacy({ base = false, compare = false } = {}) {
     base ? execFileSync('git', ['show', `${manifest.commit}:${entry.path}`], { cwd: root, maxBuffer: 40 * 1024 * 1024 }) : await readFile(path.join(root, entry.path)));
   const baselineFiles = files;
   const candidateFiles = compare ? new Map(await Promise.all(manifest.files.map(async entry => ['/civil-defense/' + entry.path, await readFile(path.join(root, entry.path))]))) : files;
+  const immutable = key => /\.(png|webp|jpg|jpeg|woff2)$/.test(key);
+  if (compare) for (const [key, bytes] of baselineFiles) if (immutable(key) && !bytes.equals(candidateFiles.get(key))) throw new Error(`Protected binary differs: ${key}`);
   const server = http.createServer((req, res) => {
     let key;
     try { key = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); } catch { res.writeHead(400).end(); return; }
@@ -19,7 +21,13 @@ export async function serveLegacy({ base = false, compare = false } = {}) {
     if (key === '/civil-defense/') key += 'index.html';
     const bytes = files.get(key);
     if (!bytes) { res.writeHead(404).end(); return; }
-    res.writeHead(200, { 'Content-Type': mime[path.extname(key)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+    res.writeHead(200, {
+      'Content-Type': mime[path.extname(key)] || 'application/octet-stream',
+      'Cache-Control': compare && immutable(key) ? 'public, max-age=31536000, immutable' : 'no-store',
+      // Test-only response policy: block third-party fonts without routing all
+      // requests through Playwright (which disables the browser asset cache).
+      'Content-Security-Policy': "default-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'"
+    });
     res.end(req.method === 'HEAD' ? undefined : bytes);
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));

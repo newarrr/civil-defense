@@ -2,8 +2,6 @@ name: Platform foundation checks (no deployment)
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [feat/platform-foundation]
 permissions:
   contents: read
 concurrency:
@@ -31,10 +29,10 @@ jobs:
       - name: Protected files, knowledge, permissions and PostgreSQL transactions
         run: npm run check
       - name: Install the browser pinned to Playwright
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium firefox
       - name: Isolated review tool, four languages, filters and accessibility
         run: npm run test:review
-      - name: Homepage before/after - 64 cases, zero pixel tolerance
+      - name: Homepage before/after - pinned Firefox, 64 cases, zero pixel tolerance
         run: npm run test:visual
       - name: Preserve QA evidence
         if: always()
