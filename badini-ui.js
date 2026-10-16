@@ -1,7 +1,7 @@
 /* Exact wording supplied by the user. Other locale dictionaries are preserved. */
 (() => {
   const phrases = [
-    'پێکڤە، ژ بۆ کۆمەڵگەهەکا پاراستیتر',
+    'بو پاراستنا ژیانێ و سەلامەتیا جڤاکی',
     'بەرگرییا شارستانی؛ پارێزەرێ ژیان و سامانێ وە',
     'بەرگرییا شارستانی',
     'پاراستنا ژیان و سامانان، بەرپرسیاریا هەمی مە'
@@ -19,9 +19,9 @@
     if(heading) { if(active) heading.setAttribute('aria-label',phrases[0]); else heading.removeAttribute('aria-label'); }
     if(kicker) { if(active) kicker.setAttribute('aria-hidden','true'); else kicker.removeAttribute('aria-hidden'); }
     if(active) {
-      put('[data-text="hero1"]','پێکڤە، ژ بۆ');
-      put('[data-text="hero2"]','کۆمەڵگەهەکا');
-      put('[data-text="hero3"]','پاراستیتر');
+      put('[data-text="hero1"]','بو پاراستنا');
+      put('[data-text="hero2"]','ژیانێ');
+      put('[data-text="hero3"]','و سەلامەتیا جڤاکی');
       put('[data-text="protection"]',phrases[1]);
       put('[data-text="brand"],[data-i18n="brand"],[data-account="brand"]',phrases[2]);
       document.documentElement.dataset.badiniFontReady = 'pending';

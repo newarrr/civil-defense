@@ -22,8 +22,8 @@
     allTopics: ['جميع موضوعات المعرفة', 'هەمی بابەتێن زانیاریێ', 'هەموو بابەتەکانی زانیاری', 'All knowledge topics'],
     prep: ['دليل التحضير ومسودات الطلبات', 'ڕێبەرا ئامادەکرن و ڕەشنووسان', 'ڕێبەری ئامادەکاری و ڕەشنووس', 'Preparation guide and request drafts'],
     contactPage: ['التواصل والأسئلة الشائعة', 'پەیوەندی و پرسیارێن بەربەلاڤ', 'پەیوەندی و پرسیاری باو', 'Contact and frequently asked questions'],
-    call: ['اتصال بالطوارئ من مكان آمن', 'پەیوەندیا فریاکەفتنێ ژ جهەکێ پاراستی', 'پەیوەندیی فریاکەوتن لە شوێنێکی سەلامەت', 'Call emergency services from a safe place'],
-    topicNote: ['توعية عامة — بانتظار مراجعة بشرية', 'هشیارییا گشتی — ل هیڤیا پێداچوونا مرۆڤی', 'هۆشیاریی گشتی — چاوەڕوانی پێداچوونەوەی مرۆیی', 'General education — human review pending']
+    call: ['اتصال بالطوارئ من مكان آمن', "پەیوەندییا فریاکەفتنێ ژ جهەکێ پاراستی", 'پەیوەندیی فریاکەوتن لە شوێنێکی سەلامەت', 'Call emergency services from a safe place'],
+    topicNote: ['توعية عامة — بانتظار مراجعة بشرية', "هشیاریا گشتی — ل هیڤیا پێداچوونا مرۆڤی", 'هۆشیاریی گشتی — چاوەڕوانی پێداچوونەوەی مرۆیی', 'General education — human review pending']
   };
   const routes = {
     how: 'how-it-works.html', safety: 'safety-guide.html', equipment: 'equipment.html',

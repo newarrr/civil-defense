@@ -1,10 +1,36 @@
 {
   "locale": "badini",
-  "provenance": "User supplied exact Duhok Badini interface phrases; not approval of all translations",
+  "provenance": "Exact user-supplied terminology and headline; not certification of all translations",
   "phrases": [
-    "پێکڤە، ژ بۆ کۆمەڵگەهەکا پاراستیتر",
+    "بو پاراستنا ژیانێ و سەلامەتیا جڤاکی",
     "بەرگرییا شارستانی؛ پارێزەرێ ژیان و سامانێ وە",
     "بەرگرییا شارستانی",
     "پاراستنا ژیان و سامانان، بەرپرسیاریا هەمی مە"
-  ]
+  ],
+  "previousPhrases": [
+    "پێکڤە، ژ بۆ کۆمەڵگەهەکا پاراستیتر"
+  ],
+  "glossary": [
+    {
+      "ar": "لحماية الحياة",
+      "badini": "بو پاراستنا ژیانێ",
+      "sorani": "بۆ پاراستنی ژیان",
+      "provenance": "user supplied"
+    },
+    {
+      "ar": "وسلامة المجتمع",
+      "badini": "و سەلامەتیا جڤاکی",
+      "sorani": "و سەلامەتی کۆمەڵگە",
+      "provenance": "user supplied in full headline"
+    },
+    {
+      "ar": "وحماية المجتمع",
+      "badini": "و پاراستنا جڤاکی",
+      "provenance": "user supplied alternate; Arabic kaf/yeh normalized"
+    }
+  ],
+  "review": {
+    "wholeSiteCertified": false,
+    "scope": "Only the quoted phrases are user supplied. Other edits remain editorial drafts."
+  }
 }
