@@ -52,5 +52,6 @@ npm run test:review
 - `evidence/legacy-git-files.json`: hashes لنسخة Git الأصلية؛ يقبل الحارس تمثيلي checkout الموثقين CRLF/LF فقط، دون تطبيع يخفي تعديل المحتوى.
 - `evidence/public-reference.json`: 64 لقطة عامة وقياساتها وhash لكل لقطة وحالة المتصفح.
 - `evidence/inventory.json`: جرد فعلي للملفات والمحتوى؛ ماسح storage لم يلتقط مفتاح الثيم المتغير، وقد وُثق يدوياً في التدقيق.
+- `evidence/validation-summary.json`: نتائج CI الناجحة، commit الكود المفحوص وhash تقريري المتصفح؛ 64 مقارنة دون فرق و16 فحص إتاحة آلي.
 - `test-results/`: صور قبل/بعد والفروق والتقارير، تجاهلها Git. CI يرفعها كartifacts لمدة محدودة.
 - `docs/PHASE-REPORT.md`: نتائج التسليم الفعلية وحدودها.
