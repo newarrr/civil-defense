@@ -39,6 +39,7 @@ ui:{
 },
 diagram:[l('حماية السكان','پاراستنا خەلکی','پاراستنی خەڵک','Protecting people'),l('تأسيس مؤسسات','دامەزراندنا دامەزراوەیان','دامەزراندنی دامەزراوەکان','Building institutions'),l('تعاون دولي','هەڤکاریا جیهانی','هاوکاریی نێودەوڵەتی','International cooperation'),l('تقليل المخاطر','کێمکرنا مەترسیان','کەمکردنەوەی مەترسی','Reducing risk'),l('مجتمع أكثر استعداداً','جڤاکەکێ ئامادەتر','کۆمەڵگەیەکی ئامادەتر','Better-prepared communities')],
 refs:{
+ mandate:{publisher:'ICDO',title:l('المهمة الأساسية: حماية السكان والممتلكات والبيئة','ئەرکێ سەرەکی: پاراستنا خەلکی، سامان و ژینگەهێ','ئەرکی سەرەکی: پاراستنی خەڵک و سامان و ژینگە','Core mandate: people, property and environment'),url:'https://icdo.org/index.php'},
  origin:{publisher:'ICDO',title:l('التاريخ الرسمي للمنظمة الدولية للحماية المدنية','مێژووی فەرمی یێ ڕێکخراوا نێڤدەولەتی','مێژووی فەرمیی ڕێکخراوی نێودەوڵەتی','Official ICDO history'),url:'https://icdo.org/about-icdo/history.html'},
  about:{publisher:'ICDO',title:l('تعريف المنظمة وتطور نطاقها','پێناسە و پێشکەفتنا ڕێکخراوێ','پێناسە و گەشەی ڕێکخراوەکە','ICDO: mandate and development'),url:'https://icdo.org/en/about-icdo/'},
  iraq:{publisher:'وزارة الداخلية العراقية',title:l('الحارس: الهيكل الأول للجهاز سنة 1956','الحارس: ڕێکخستنا ئێکێ یا دامەزراوەیێ ل 1956','الحارس: یەکەم پێکهاتەی دەزگاکە لە 1956','Al-Haris: the Iraqi institution in 1956'),url:'https://moi.gov.iq/upload/2515194386.pdf'},
