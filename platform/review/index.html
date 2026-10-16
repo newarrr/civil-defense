@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>مراجعة أساس المعرفة — دفاع مدني دهوك</title><link rel="stylesheet" href="review.css"><script type="module" src="review.mjs"></script></head>
+<body class="cd-review">
+  <a href="#results" class="skip" data-label="skip">انتقل للنتائج</a>
+  <header><a href="https://newarrr.github.io/civil-defense/" class="identity"><img src="logo.webp" alt="" width="44" height="49"><span data-label="brand">الدفاع المدني — دهوك</span></a><label><span data-label="language">اللغة</span><select id="locale"><option value="badini">بادینی</option><option value="sorani">سۆرانی</option><option value="ar">العربية</option><option value="en">English</option></select></label></header>
+  <main>
+    <p class="eyebrow" data-label="eyebrow">أساس المنصة • مراجعة محلية</p>
+    <h1 data-label="title">المعرفة مترابطة،<br>والمصدر أولاً.</h1>
+    <p class="lead" data-label="lead">استكشف الموضوعات الحالية عبر الخطر والمرحلة والجمهور والمكان.</p>
+    <aside class="notice"><strong data-label="noticeTitle">معاينة مراجعة فقط — لا محتوى معتمداً للنشر هنا</strong><p data-label="notice">الموضوعات من الموقع الحالي. التصنيف والترجمات والمصادر تنتظر المراجعة البشرية. لا حسابات أو بلاغات أو نشر من هذه الواجهة.</p></aside>
+    <form id="filters" role="search">
+      <label class="query"><span data-label="search">البحث في الموضوعات</span><input type="search" id="query" maxlength="200" autocomplete="off"></label>
+      <div class="dimensions"><label><span data-label="hazards">الخطر</span><select id="hazards"></select></label><label><span data-label="stages">المرحلة</span><select id="stages"></select></label><label><span data-label="audiences">الجمهور</span><select id="audiences"></select></label><label><span data-label="places">المكان</span><select id="places"></select></label></div>
+      <button type="reset" data-label="reset">مسح المرشحات</button>
+    </form>
+    <section aria-labelledby="result-title" id="results" tabindex="-1"><div class="result-heading"><h2 id="result-title" data-label="results">الموضوعات</h2><p id="count" role="status" aria-live="polite"></p></div><div id="cards" class="cards"></div><p id="empty" hidden data-label="empty">لا توجد نتائج تطابق هذه المرشحات. جرّب تغيير أحد الأبعاد.</p></section>
+    <p id="error" role="alert" hidden>تعذر تحميل بيانات المراجعة. أعد تشغيل خادم المعاينة المحلي.</p>
+  </main>
+  <footer><span data-label="footer">أداة مراجعة محلية • الرئيسية المنشورة محفوظة دون تغيير</span><span>Asia/Baghdad · Foundation 0.1</span></footer>
+</body></html>
