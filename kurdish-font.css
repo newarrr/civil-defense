@@ -1,0 +1,16 @@
+/* Kurdish typography, locally hosted. Vazirmatn v33.003, SIL OFL 1.1. */
+@font-face{font-family:'Duhok Kurdish';src:url('typography/Vazirmatn-Variable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+html:is([data-locale=badini],[data-locale=sorani]) body{font-family:'Duhok Kurdish','Duhok Noto Sans',sans-serif;font-synthesis:none;font-weight:450;letter-spacing:normal}
+/* Legacy page styles use explicit font shorthands; scope this family override to Kurdish text only. */
+html:is([data-locale=badini],[data-locale=sorani]) :is(h1,h2,h3,h4,p,a,button,input,select,textarea,label,summary,strong,small,span,em,li,td,th,legend,dt,dd,figcaption){font-family:'Duhok Kurdish','Duhok Noto Sans',sans-serif!important;letter-spacing:normal;font-synthesis:none}
+html:is([data-locale=badini],[data-locale=sorani]) :is(h1,h2,h3){font-weight:700}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .brand strong{font-weight:750;line-height:1.5}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .hero-copy h1{font-weight:750;line-height:1.4;letter-spacing:0}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .hero-copy h1 em{font-weight:inherit}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .hero-copy h2{font-weight:550;line-height:1.75}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .hero-copy .kicker{font-weight:650}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page :is(.sections-primary>a,.sections-trigger){font-weight:650}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page :is(.service-strip strong,.gallery-caption strong,.feature-card h2,.community-section-head h2){font-weight:700}
+html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .feature-card p{font-weight:450}
+html:is([data-locale=badini],[data-locale=sorani]) .site-footer :is(h2,h3){font-weight:700}
+@media(max-width:900px){html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .hero-copy h1{line-height:1.5}html[dir]:is([data-locale=badini],[data-locale=sorani]) .reference-home .page .hero-copy h2{line-height:1.8}}
