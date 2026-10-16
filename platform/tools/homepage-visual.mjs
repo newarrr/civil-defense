@@ -76,10 +76,10 @@ try {
     const b = await sharp(shots[1]).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
     const sameDimensions = a.info.width === b.info.width && a.info.height === b.info.height;
     let changedPixels = 0;
-    if (sameDimensions) {
+    if (sameDimensions && !a.data.equals(b.data)) {
       const diff = Buffer.alloc(a.data.length);
       for (let i = 0; i < a.data.length; i += 4) {
-        const changed = a.data.subarray(i, i + 4).some((v, n) => v !== b.data[i + n]);
+        const changed = a.data[i] !== b.data[i] || a.data[i + 1] !== b.data[i + 1] || a.data[i + 2] !== b.data[i + 2] || a.data[i + 3] !== b.data[i + 3];
         if (changed) changedPixels++;
         diff[i] = changed ? 240 : 255; diff[i + 1] = changed ? 0 : 255; diff[i + 2] = changed ? 50 : 255; diff[i + 3] = 255;
       }
