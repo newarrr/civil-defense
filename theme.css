@@ -32,6 +32,9 @@ html[data-theme=dark][dir] .reference-home .page .hero-copy{background:transpare
 html[data-theme=dark][dir] .reference-home .page .hero-copy h1{color:#f0f4f7}
 html[data-theme=dark][dir] .reference-home .page .hero-copy h1 em,html[data-theme=dark][dir] .reference-home .page .hero-copy .kicker{color:#ff6579}
 html[data-theme=dark][dir] .reference-home .page .hero-copy h2{color:#b7c4ce}
+html[data-theme=dark][dir] .reference-home .page .field-photo{clip-path:polygon(0 0,97% 0,90% 74%,80% 74%,74% 100%,0 100%)}
+html[data-theme=dark][dir] .reference-home .page .field-photo:before{content:'';display:block;position:absolute;inset:0 auto 0 35.4%;width:4%;height:100%;background:#111c24;clip-path:polygon(0 0,13% 0,92% 100%,78% 100%);z-index:1}
+html[data-theme=dark][dir] .reference-home .page .field-photo:after{content:'';display:block;position:absolute;inset:48.7% auto auto 0;width:38.2%;height:.8%;background:#111c24;z-index:1}
 html[data-theme=dark][dir] .reference-home .page .service-strip{background:#111e27;color:var(--theme-text)}
 html[data-theme=dark][dir] .reference-home .page .service-strip>a{color:var(--theme-text)}
 html[data-theme=dark][dir] .reference-home .page .service-strip>a+a:after{background:var(--theme-edge)}
@@ -101,6 +104,7 @@ html[data-theme=dark] .account-page #account-message{background:#3b2630;color:#f
 @media print{html[data-theme] body{background:white!important;color:#17232d!important}.theme-toggle,.theme-preference{display:none!important}html[data-theme] .knowledge-page :is(.section,.intro,.card,.toc){background:white!important;color:#17232d!important;border-color:#ccc!important}}
 @media(prefers-reduced-motion:no-preference){.theme-toggle .theme-icon{transition:transform .2s ease}.theme-toggle:hover .theme-icon{transform:rotate(-12deg)}}
 .theme-segments button{font-family:inherit;font-size:11px;font-weight:600;line-height:1.5}
+html[data-theme=dark][dir] .reference-home .page .field-photo:after{inset-inline-start:auto;inset-inline-end:auto;left:0;right:auto;width:38.2%;max-width:none;padding:0;margin:0;border:0;border-radius:0;height:.8%}
 html[data-theme=dark] .interior-page .about-section{background:#14232d}
 html[data-theme=dark] .interior-page .route-note{background:#342e20;color:#eddbb7;border-color:#756642}
 html[data-theme=dark] .interior-page :is(.about-copy p,.contact-card p,.service-card p,.faq-answer){color:#b0c1cd}
