@@ -1,0 +1,20 @@
+# Checks the site after every change (including edits made in /admin).
+# If something is wrong, GitHub marks the commit with a red ✗ and emails the repository owner.
+name: Site check
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tools/check.mjs
