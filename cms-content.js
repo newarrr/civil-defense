@@ -203,4 +203,14 @@
     applyStats();
     if (location.hash.indexOf('#news-') === 0) open(location.hash.slice(6));
   }
+
+  // Offline support for emergencies (see sw.js).
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
+        var urls = [location.href].concat(performance.getEntriesByType('resource').map(function (r) { return r.name; }));
+        if (reg.active) reg.active.postMessage({ type: 'cache-urls', urls: urls });
+      }).catch(function () {});
+    });
+  }
 })();

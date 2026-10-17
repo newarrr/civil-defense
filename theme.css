@@ -113,3 +113,7 @@ html[data-theme=dark] .account-page .account-card #account-panel{background:#152
 html[data-theme=dark] .knowledge-page .graphic-icon{background:#382430;color:#ff8398}
 html[data-theme=dark] .skip:focus{background:#1d3442;color:#fff}
 .account-languages button.theme-toggle,.language-controls button.theme-toggle{background:var(--theme-panel);color:var(--theme-text);border:1px solid var(--theme-edge);border-radius:11px;min-width:42px;width:42px;padding:9px}
+
+/* Narrow phones (portal header was 3px too wide at 375px in English) */
+@media (max-width:420px){.interior-page .header-actions{gap:2px;min-width:0;max-width:100%}}
+@media (max-width:340px){.interior-page .theme-toggle{width:36px;min-width:36px;padding:0}.interior-page .header-actions{flex-shrink:0}.interior-page .header-inner .brand{min-width:0;flex:1 1 auto}.interior-page .header-inner .brand *{min-width:0;overflow-wrap:anywhere}}

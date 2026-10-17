@@ -1,0 +1,25 @@
+{
+  "name": "مديرية الدفاع المدني — محافظة دهوك",
+  "short_name": "الدفاع المدني",
+  "description": "معلومات السلامة والطوارئ من الدفاع المدني في دهوك بأربع لغات.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4f0",
+  "theme_color": "#c70026",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/civil-defense-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

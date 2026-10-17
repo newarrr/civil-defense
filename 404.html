@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>404 — الصفحة غير موجودة — الدفاع المدني دهوك</title>
+<meta name="theme-color" content="#c70026">
+<style>
+@font-face{font-family:'Duhok Noto Sans';src:url('typography/NotoSansArabic.woff2') format('woff2');font-display:swap}
+:root{--red:#c70026;--ink:#16191c;--muted:#56616b;--bg:#f7f4f0;--card:#fff;--line:#ebe6e0}
+@media (prefers-color-scheme:dark){:root{--ink:#e8eef4;--muted:#b7c7d2;--bg:#0f1b22;--card:#1a2d38;--line:#354a56}}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font-family:'Duhok Noto Sans',system-ui,sans-serif;padding:24px 16px}
+main{width:min(720px,100%);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:18px;padding:28px clamp(18px,4vw,36px);box-shadow:0 24px 60px #0b1a2a1f}
+.logo{display:block;width:84px;height:84px;margin:0 auto 8px}
+.code{text-align:center;font:800 56px/1 system-ui;color:var(--red);margin:0 0 4px}
+section{padding:16px 0;border-top:1px solid var(--line)}section:first-of-type{border-top:0}
+h1{font-size:20px;margin:0 0 6px}p{margin:0 0 12px;color:var(--muted);line-height:1.9}
+.a{display:flex;flex-wrap:wrap;gap:10px}
+a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:12px;font-weight:700;text-decoration:none}
+.call{background:var(--red);color:#fff}.call b{font-size:20px}.home{border:1px solid var(--line);color:var(--ink)}
+a:focus-visible{outline:3px solid #ffcc75;outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<img class="logo" src="assets/icon-192.png" alt="الدفاع المدني — دهوك" width="84" height="84">
+<p class="code" aria-hidden="true">404</p>
+<section lang="ar" dir="rtl" data-l="ar"><h1>الصفحة غير موجودة</h1><p>ربما تغيّر الرابط أو حُذفت الصفحة.</p><div class="a"><a class="call" href="tel:115"><b dir="ltr">115</b> اتصل بالطوارئ</a><a class="home" data-home href="index.html?lang=ar">الصفحة الرئيسية</a></div></section><section lang="ku-Arab" dir="rtl" data-l="badini"><h1>ئەڤ پەڕە نەهاتە دیتن</h1><p>دبیت لینک هاتبیتە گوهۆڕین یان پەڕە هاتبیتە ژێبرن.</p><div class="a"><a class="call" href="tel:115"><b dir="ltr">115</b> پەیوەندی ب فریاکەفتنێ</a><a class="home" data-home href="index.html?lang=badini">پەڕێ سەرەکی</a></div></section><section lang="ckb" dir="rtl" data-l="sorani"><h1>ئەم پەڕەیە نەدۆزرایەوە</h1><p>لەوانەیە بەستەرەکە گۆڕابێت یان پەڕەکە سڕابێتەوە.</p><div class="a"><a class="call" href="tel:115"><b dir="ltr">115</b> پەیوەندی بە فریاکەوتن</a><a class="home" data-home href="index.html?lang=sorani">پەڕەی سەرەکی</a></div></section><section lang="en" dir="ltr" data-l="en"><h1>Page not found</h1><p>The link may have changed or the page was removed.</p><div class="a"><a class="call" href="tel:115"><b dir="ltr">115</b> Call emergency</a><a class="home" data-home href="index.html?lang=en">Home page</a></div></section>
+</main>
+<script>
+// Works at any depth (GitHub Pages serves 404.html for every missing path).
+(function(){var base=location.pathname.indexOf('/civil-defense/')===0?'/civil-defense/':'/';
+document.querySelectorAll('img,a[data-home]').forEach(function(el){var k=el.tagName==='IMG'?'src':'href';el.setAttribute(k,base+el.getAttribute(k));});
+var q=new URLSearchParams(location.search).get('lang'),s=document.querySelector('section[data-l="'+q+'"]');if(s)s.parentNode.insertBefore(s,document.querySelector('section'));})();
+</script>
+</body>
+</html>
