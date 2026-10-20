@@ -1,0 +1,55 @@
+{
+  "validatedCodeCommit": "3f5a17b4eb75fd773ffcd60996cb6c857018e637",
+  "baselineCommit": "bf9fc51f98a6a9de18f6b4f85f8ff42de6a9213f",
+  "run": "https://github.com/newarrr/civil-defense/actions/runs/38943799786",
+  "checkedAt": "2026-10-16T18:05:09.429Z",
+  "scope": "Owner chose review only; no external services, merge or deployment",
+  "legacyFiles": {
+    "files": 115,
+    "differences": 0,
+    "baselineCommit": "bf9fc51f98a6a9de18f6b4f85f8ff42de6a9213f"
+  },
+  "coreTests": {
+    "passed": 20,
+    "total": 20
+  },
+  "reviewTests": {
+    "passed": 2,
+    "total": 2,
+    "browser": "156.0.8078.4",
+    "layoutAndAutomatedAACases": 16,
+    "axeViolations": 0,
+    "interactiveChecks": "pass"
+  },
+  "visualTests": {
+    "browserFamily": "firefox",
+    "browser": "157.0",
+    "cases": 64,
+    "passed": 64,
+    "changedPixels": 0,
+    "matchingMetrics": 64,
+    "correctLanguageThemeAndWidth": 64,
+    "pageErrors": [],
+    "failedLocalRequests": [],
+    "viewportWidths": [
+      320,
+      390,
+      768,
+      1024,
+      1440,
+      1920,
+      2560,
+      3840
+    ]
+  },
+  "reportSha256": {
+    "homepage": "e9aa0d943a9aad46dbc33097546413ae301a298aa1257591626cc005c982d518",
+    "review": "14ca9fa355341b318d26532246b0969d4389536b19839b07c2959a3828162cb0"
+  },
+  "limitations": [
+    "Not a production CMS or authentication provider",
+    "No human scientific or Kurdish language approval",
+    "Chromium exact-raster diagnostic is not the acceptance engine",
+    "Windows Firefox runtime dependency was not installed; acceptance ran on CI Ubuntu"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "duhok-civil-defense-foundation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "freeze": "node tools/freeze.mjs",
+    "test:visual": "node tools/homepage-visual.mjs",
+    "test:review": "node --test test/review.browser.mjs",
+    "review": "node tools/review-server.mjs",
+    "check": "npm run freeze && npm test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@electric-sql/pglite": "0.5.10",
+    "playwright": "1.64.1",
+    "sharp": "0.35.5"
+  }
+}
