@@ -17,4 +17,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # The pages in the repository must be exactly what the template generates:
+      # nothing changed and nothing new (an untracked page would mean it was never committed).
+      - run: node tools/build.mjs
+      - name: Generated files are committed and up to date
+        run: |
+          changes="$(git status --porcelain -- '*.html' sitemap.xml robots.txt sw.js)"
+          if [ -n "$changes" ]; then echo "$changes"; echo "Run node tools/build.mjs and commit the result."; exit 1; fi
       - run: node tools/check.mjs

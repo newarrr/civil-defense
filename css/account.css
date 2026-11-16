@@ -1,0 +1,151 @@
+/* Citizen account preview (account.html): introduction on one side, sign-in card on the other. */
+
+@layer components {
+  .account {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    align-items: start;
+    gap: clamp(24px, 5vw, 64px);
+    padding-block: clamp(28px, 5vw, 64px);
+  }
+
+  .account-intro {
+    display: grid;
+    justify-items: start;
+    gap: 16px;
+  }
+
+  .account-intro h1 {
+    font-size: clamp(28px, 3.6vw, 44px);
+    font-weight: 800;
+  }
+
+  .account-intro h1 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .account-intro .emergency-bar {
+    width: 100%;
+    margin-block: 4px 0;
+  }
+
+  .account-card {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: var(--surface);
+    box-shadow: var(--shadow-m);
+  }
+
+  .account-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .account-tabs button {
+    min-height: 54px;
+    border: 0;
+    border-bottom: 3px solid var(--line);
+    background: var(--raised);
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .account-tabs button[aria-selected="true"] {
+    border-bottom-color: var(--brand);
+    background: var(--surface);
+    color: var(--accent);
+  }
+
+  #account-panel {
+    display: grid;
+    gap: 14px;
+    padding: clamp(18px, 3vw, 28px);
+  }
+
+  #account-panel h2 {
+    font-size: 24px;
+  }
+
+  .account-subtitle,
+  .account-privacy,
+  .account-help {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .input-with-action {
+    display: flex;
+    gap: 8px;
+  }
+
+  .input-with-action button {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    background: var(--surface);
+  }
+
+  .input-with-action button[aria-pressed="true"] {
+    border-color: var(--brand);
+    color: var(--accent);
+  }
+
+  .password-meter {
+    display: inline-flex;
+    gap: 4px;
+    margin-inline-start: 10px;
+    vertical-align: middle;
+  }
+
+  .password-meter span {
+    width: 28px;
+    height: 5px;
+    border-radius: 3px;
+    background: var(--line);
+  }
+
+  .password-meter[data-level="1"] span:nth-child(1),
+  .password-meter[data-level="2"] span:nth-child(-n + 2),
+  .password-meter[data-level="3"] span {
+    background: var(--safe);
+  }
+
+  #account-message:not(:empty) {
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    background: var(--raised);
+    font-size: 14px;
+  }
+
+  .account-or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .account-or::before,
+  .account-or::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .account {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .account-card {
+      order: -1;
+    }
+  }
+}

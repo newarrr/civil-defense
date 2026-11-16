@@ -13,7 +13,7 @@ backend:
 
 site_url: https://newarrr.github.io/civil-defense/
 display_url: https://newarrr.github.io/civil-defense/
-logo_url: ../assets/civil-defense-logo.png
+logo_url: ../assets/brand/logo.png
 
 media_folder: assets/uploads
 public_folder: assets/uploads
@@ -48,7 +48,7 @@ collections:
             summary: "{{fields.date}} — {{fields.ar.title}} {{fields.published | ternary('', '· مسودة')}}"
             add_to_top: true
             fields:
-              - { name: published, label: "منشور (ألغِ التفعيل لحفظه كمسودة غير ظاهرة)", widget: boolean, default: true }
+              - { name: published, label: "منشور (ألغِ التفعيل لإخفائه من صفحات الموقع؛ يبقى نصه مقروءًا في ملف الأخبار العام وفي سجل GitHub)", widget: boolean, default: true }
               - name: category
                 label: التصنيف
                 widget: select
@@ -176,11 +176,12 @@ collections:
                 widget: select
                 default: sources
                 options: &groups
-                  - { label: عن الدفاع المدني, value: about }
-                  - { label: دليل الخدمات, value: services }
-                  - { label: التوعية والوقاية, value: safety }
-                  - { label: المصادر والتحديثات, value: sources }
-                  - { label: التواصل والمساعدة, value: contact }
+                  # الأسماء كما تظهر في رأس الموقع
+                  - { label: عن المديرية, value: about }
+                  - { label: الخدمات, value: services }
+                  - { label: الوقاية والتوعية, value: safety }
+                  - { label: المعلومات والإعلام, value: sources }
+                  - { label: اتصل بنا, value: contact }
               - { name: count, label: العدد, widget: number, value_type: int, min: 1, max: 6, default: 3 }
           - name: links
             label: روابط إضافية
@@ -206,7 +207,7 @@ collections:
   # ------------------------------------------------------------- الإحصائيات
   - name: stats
     label: الإحصائيات
-    description: الأرقام في أسفل الصفحة الرئيسية. لا يظهر الرقم إلا بعد تفعيل «معتمد»، وإلا تبقى العبارة «بانتظار البيانات».
+    description: الأرقام في الصفحة الرئيسية. لا يظهر الرقم في الصفحة إلا بعد تفعيل «معتمد من المديرية»، وإذا لم يُعتمد أي رقم يختفي قسم الإحصائيات كله. الرقم غير المعتمد يبقى مقروءًا في ملف عام، فلا تُدخل رقمًا لا يجوز نشره.
     files:
       - name: stats
         label: أرقام الصفحة الرئيسية
@@ -257,7 +258,7 @@ collections:
   # ---------------------------------------------------------------- المراكز
   - name: centers
     label: مراكز الدفاع المدني
-    description: تظهر في صفحة «حالة الخدمات» قسم المراكز. لا يظهر المركز إلا بعد تفعيل «تم التحقق».
+    description: تظهر في صفحة «حالة الخدمات» قسم المراكز. لا يظهر المركز في الصفحة إلا بعد تفعيل «تم التحقق»، لكن بياناته تبقى مقروءة في ملف عام.
     files:
       - name: centers
         label: المراكز

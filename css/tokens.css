@@ -1,0 +1,113 @@
+/* Design tokens and fonts — loaded first on every page.
+   Change a colour, radius or font here and the whole site follows, in both themes. */
+
+/* Cascade layers, lowest priority first. A rule in a later layer always wins over an earlier one,
+   whatever the selectors look like — so nobody needs !important or longer selectors to override:
+     base        element defaults, utilities, buttons, forms, dialog
+     components  how each component looks
+     layout      where components sit and how they resize (the approved page layouts) */
+@layer base, components, layout;
+
+/* Fonts are served from this site. A page downloads only the one its language needs:
+   Kurdish (Badini, Sorani) → Vazirmatn · Arabic and English → Noto Sans Arabic. */
+@font-face {
+  font-family: "Duhok Kurdish";
+  src: url("../fonts/Vazirmatn.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* unicode-range: Latin, Arabic script and punctuation only. Without it a Kurdish page would download
+   this file as well, just to look for an arrow (← ↗ ⌄) that neither font contains. */
+@font-face {
+  font-family: "Duhok Noto Sans";
+  src: url("../fonts/NotoSansArabic.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+08A0-08FF, U+2000-206F, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+:root {
+  /* surfaces */
+  --canvas: #faf8f4;
+  --surface: #fff;
+  --raised: #f5f2ed;
+  --line: #e2ddd6;
+  /* text */
+  --text: #17252d;
+  --text-strong: #0b0c0d;
+  --muted: #61717d;
+  /* brand red: --brand fills buttons, --accent colours text and icons */
+  --brand: #c70026;
+  --brand-strong: #a8001f;
+  --on-brand: #fff;
+  --accent: #c90021;
+  --accent-soft: #fdecee;
+  --accent-line: #e8a4ae;
+  /* status */
+  --notice-bg: #fff8e6;
+  --notice-line: #e6c15c;
+  --notice-text: #5c4300;
+  --safe: #0b714c;
+  --safe-soft: #e7f5ed;
+  --info: #344f70;
+  --info-soft: #edf1f7;
+  --alert-advisory: #1d4ed8;
+  --alert-watch: #b45309;
+  --alert-warning: #c1121f;
+  --focus: #ffbe3d;
+  /* footer (dark in both themes) */
+  --footer: #101a22;
+  --footer-text: #e7eef3;
+  /* shape */
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 18px;
+  --radius-pill: 999px;
+  --shadow-s: 0 1px 2px #0b1a2a14;
+  --shadow-m: 0 6px 18px #0b1a2a14;
+  --shadow-l: 0 24px 60px #0b1a2a33;
+  /* layout */
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 32px);
+  /* type */
+  --font: "Duhok Noto Sans", system-ui, "Segoe UI", Tahoma, sans-serif;
+  --font-numeric: system-ui, "Segoe UI", sans-serif;
+  --weight-body: 400;
+  --weight-strong: 700;
+  --text-direction: rtl;
+}
+
+:root[dir="ltr"] {
+  --text-direction: ltr;
+}
+
+:root:is([data-locale="badini"], [data-locale="sorani"]) {
+  --font: "Duhok Kurdish", "Duhok Noto Sans", system-ui, "Segoe UI", Tahoma, sans-serif;
+  --weight-body: 450;
+}
+
+:root[data-theme="dark"] {
+  --canvas: #0b131a;
+  --surface: #121e27;
+  --raised: #1b2a35;
+  --line: #2c3e4b;
+  --text: #edf3f7;
+  --text-strong: #fff;
+  --muted: #afbdc8;
+  --accent: #ff6579;
+  --accent-soft: #3a1d24;
+  --accent-line: #6d2f3b;
+  --notice-bg: #33290f;
+  --notice-line: #7a6220;
+  --notice-text: #ffe7a8;
+  --safe: #5fd3a4;
+  --safe-soft: #12301f;
+  --info: #9fbbe0;
+  --info-soft: #172534;
+  --shadow-s: 0 1px 2px #0006;
+  --shadow-m: 0 6px 18px #0006;
+  --shadow-l: 0 24px 60px #000a;
+}

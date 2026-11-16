@@ -1,0 +1,7 @@
+# One line-ending style everywhere, so the pages generated on Windows and on GitHub are byte-identical
+# (the site check compares them).
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.jpg binary
+*.woff2 binary

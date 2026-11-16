@@ -1,0 +1,14 @@
+{
+  "name": "duhok-civil-defense-website",
+  "private": true,
+  "type": "module",
+  "description": "Static multilingual website of the Directorate of Civil Defense — Duhok Governorate. No build step is needed to run it; the scripts below are maintenance tools.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "node tools/check.mjs",
+    "review": "node tools/review.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
