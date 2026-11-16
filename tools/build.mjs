@@ -151,6 +151,7 @@ function errorHtml(kind) {
 <meta name="robots" content="noindex">
 <title>${esc(ar[`error.${kind}.title`])} — ${esc(ar['site.name'])}</title>
 <meta name="theme-color" content="#c70026">
+<link rel="icon" href="${base}assets/brand/icon-192.png" type="image/png">
 <style>
 :root{--red:#c70026;--ink:#16191c;--muted:#56616b;--bg:#faf8f4;--card:#fff;--line:#ebe6e0}
 @media (prefers-color-scheme:dark){:root{--ink:#e8eef4;--muted:#b7c7d2;--bg:#0f1b22;--card:#1a2d38;--line:#354a56}}

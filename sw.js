@@ -14,7 +14,7 @@
 //
 // CORE holds only what offline.html needs. Pages are cached when they are visited: a page never
 // opened online falls back to offline.html (with the 115 button) instead of a half-cached page.
-const VERSION = 'cd-cc4c7fb6b78f';
+const VERSION = 'cd-7d4e14435a15';
 const CORE = ['offline.html', 'assets/brand/icon-192.png'];
 const scope = new URL(self.registration.scope);
 // Every copy this worker stores is confirmed with the server first ('no-cache'): GitHub Pages lets
